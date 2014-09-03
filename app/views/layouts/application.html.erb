@@ -15,7 +15,7 @@
 	    	<div class="menuextras">
 				<div class="extras">
 					<ul>
-						<li class="shopping-cart-items"><i class="glyphicon glyphicon-shopping-cart icon-white"></i> <a href="page-shopping-cart.html"><b>3 items</b></a></li>
+						<!-- <li class="shopping-cart-items"><i class="glyphicon glyphicon-shopping-cart icon-white"></i> <a href="page-shopping-cart.html"><b>3 items</b></a></li>
 						<li>
 							<div class="dropdown choose-country">
 								<a class="#" data-toggle="dropdown" href="#"><img src="img/flags/gb.png" alt="Great Britain"> UK</a>
@@ -25,7 +25,7 @@
 									<li role="menuitem"><a href="#"><img src="img/flags/es.png" alt="Spain"> ES</a></li>
 								</ul>
 							</div>
-						</li>
+						</li> -->
 		        		<li>
 		        		<% if user_signed_in? %>
 						    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
@@ -38,7 +38,7 @@
 	        </div>
 	        <nav id="mainmenu" class="mainmenu">
 				<ul>
-					<li class="logo-wrapper"><a href="index.html"><img src="img/mPurpose-logo.png" alt="Multipurpose Twitter Bootstrap Template"></a></li>
+					<li class="logo-wrapper"><a href="index.html"><img src="/assets/company-logo.jpg" alt="Multipurpose Twitter Bootstrap Template" width="70px"></a></li>
 					<li class="active">
 						<a href="index.html">Home</a>
 					</li>
@@ -52,64 +52,37 @@
 								<div>
 									<h4>Homepage</h4>
 									<ul>
-										<li><a href="index.html">Homepage (Sample 1)</a></li>
-										<li><a href="page-homepage-sample.html">Homepage (Sample 2)</a></li>
+										<li><a href="#">Homepage Sample 1</a></li>
+										<li><a href="#">Homepage Sample 2</a></li>
 									</ul>
 									<h4>Services & Pricing</h4>
 									<ul>
-										<li><a href="page-services-1-column.html">Services/Features (Rows)</a></li>
-										<li><a href="page-services-3-columns.html">Services/Features (3 Columns)</a></li>
-										<li><a href="page-services-4-columns.html">Services/Features (4 Columns)</a></li>
-										<li><a href="page-pricing.html">Pricing Table</a></li>
-									</ul>
-									<h4>Team & Open Vacancies</h4>
-									<ul>
-										<li><a href="page-team.html">Our Team</a></li>
-										<li><a href="page-vacancies.html">Open Vacancies (List)</a></li>
-										<li><a href="page-job-details.html">Open Vacancies (Job Details)</a></li>
+										<li><a href="#">Services/Features</a></li>
+										<li><a href="#">Services/Features 3</a></li>
+										<li><a href="#">Services/Features 4</a></li>
+										<li><a href="#">Pricing Table</a></li>
 									</ul>
 								</div>
 								<div>
 									<h4>Our Work (Portfolio)</h4>
 									<ul>
-										<li><a href="page-portfolio-2-columns-1.html">Portfolio (2 Columns, Option 1)</a></li>
-										<li><a href="page-portfolio-2-columns-2.html">Portfolio (2 Columns, Option 2)</a></li>
-										<li><a href="page-portfolio-3-columns-1.html">Portfolio (3 Columns, Option 1)</a></li>
-										<li><a href="page-portfolio-3-columns-2.html">Portfolio (3 Columns, Option 2)</a></li>
-										<li><a href="page-portfolio-item.html">Portfolio Item (Project) Description</a></li>
+										<li><a href="#">Portfolio 1</a></li>
+										<li><a href="#">Portfolio 2</a></li>
+										<li><a href="#">Portfolio 4</a></li>
+										<li><a href="#">Portfolio 3</a></li>
+										<li><a href="#">Project Description</a></li>
 									</ul>
-									<h4>General Pages</h4>
-									<ul>
-										<li><a href="page-about-us.html">About Us</a></li>
-										<li><a href="page-contact-us.html">Contact Us</a></li>
-										<li><a href="page-faq.html">Frequently Asked Questions</a></li>
-										<li><a href="page-testimonials-clients.html">Testimonials & Clients</a></li>
-										<li><a href="page-events.html">Events</a></li>
-										<li><a href="page-404.html">404 Page</a></li>
-										<li><a href="page-sitemap.html">Sitemap</a></li>
-										<li><a href="page-login.html">Login</a></li>
-										<li><a href="page-register.html">Register</a></li>
-										<li><a href="page-password-reset.html">Password Reset</a></li>
-										<li><a href="page-terms-privacy.html">Terms & Privacy</a></li>
-										<li><a href="page-coming-soon.html">Coming Soon</a></li>
-									</ul>
+									
 								</div>
 								<div>
 									<h4>eShop</h4>
 									<ul>
-										<li><a href="page-products-3-columns.html">Products listing (3 Columns)</a></li>
-										<li><a href="page-products-4-columns.html">Products listing (4 Columns)</a></li>
-										<li><a href="page-products-slider.html">Products Slider</a></li>
-										<li><a href="page-product-details.html">Product Details</a></li>
-										<li><a href="page-shopping-cart.html">Shopping Cart</a></li>
+										<li><a href="#">Products listing </a></li>
+										<li><a href="#">Products Slider</a></li>
+										<li><a href="#">Product Details</a></li>
+										<li><a href="#">Shopping Cart</a></li>
 									</ul>
-									<h4>Blog</h4>
-									<ul>
-										<li><a href="page-blog-posts.html">Blog Posts (List)</a></li>
-										<li><a href="page-blog-post-right-sidebar.html">Blog Single Post (Right Sidebar)</a></li>
-										<li><a href="page-blog-post-left-sidebar.html">Blog Single Post (Left Sidebar)</a></li>
-										<li><a href="page-news.html">Latest & Featured News</a></li>
-									</ul>
+									
 								</div>
 							</div><!-- /mainmenu-submenu-inner -->
 						</div><!-- /mainmenu-submenu -->
@@ -129,31 +102,31 @@
 		<div class="container">
 	    	<div class="row">
 	    		<div class="col-footer col-md-3 col-xs-6">
-	    			<h3>Our Latest Work</h3>
+	    			<h3>Our Promotions</h3>
 	    			<div class="portfolio-item">
 						<div class="portfolio-image">
-							<a href="page-portfolio-item.html"><img src="img/portfolio6.jpg" alt="Project Name"></a>
+							<a href="#"><img src="/assets/portfolio6.jpg" alt="Project Name"></a>
 						</div>
 					</div>
 	    		</div>
 	    		<div class="col-footer col-md-3 col-xs-6">
 	    			<h3>Navigate</h3>
 	    			<ul class="no-list-style footer-navigate-section">
-	    				<li><a href="page-blog-posts.html">Blog</a></li>
-	    				<li><a href="page-portfolio-3-columns-2.html">Portfolio</a></li>
-	    				<li><a href="page-products-3-columns.html">eShop</a></li>
-	    				<li><a href="page-services-3-columns.html">Services</a></li>
-	    				<li><a href="page-pricing.html">Pricing</a></li>
-	    				<li><a href="page-faq.html">FAQ</a></li>
+	    				<li><a href="#">What's New</a></li>
+	    				<li><a href="#">Portfolio</a></li>
+	    				<li><a href="#">eShop</a></li>
+	    				<li><a href="#">Services</a></li>
+	    				<li><a href="#">Pricing</a></li>
+	    				<li><a href="#">FAQ</a></li>
 	    			</ul>
 	    		</div>
 	    		
 	    		<div class="col-footer col-md-4 col-xs-6">
 	    			<h3>Contacts</h3>
 	    			<p class="contact-us-details">
-	    				<b>Address:</b> 123 Fake Street, LN1 2ST, London, United Kingdom<br/>
-	    				<b>Phone:</b> +44 123 654321<br/>
-	    				<b>Fax:</b> +44 123 654321<br/>
+	    				<b>Address:</b> 123 New Street, ABC1 2DE, Delhi, India<br/>
+	    				<b>Phone:</b> +91 123 456789<br/>
+	    				<b>Fax:</b> +91 123 456789<br/>
 	    				<b>Email:</b> <a href="mailto:ms.rockyd@hotmail.com">getintoutch@yourcompanydomain.com</a>
 	    			</p>
 	    		</div>
