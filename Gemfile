@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+gem 'rails', '4.0.1'
 
 # Use mysql as the database for Active Record
-# gem 'mysql2'
-gem 'pg'
+gem 'mysql2'
+# gem 'pg'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -34,6 +34,13 @@ group :doc do
 end
 
 gem 'devise'
+gem 'paperclip'
+# gem 'activeadmin', github: 'activeadmin'
+# gem 'jquery-ui-rails'
+# gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+
+# gem 'meta_search'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

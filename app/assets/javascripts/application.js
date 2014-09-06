@@ -20,4 +20,6 @@
 //= require modernizr.min
 //= require template
 //= require turbolinks
+//= require jquery.smartmenus
+//= require jquery.smartmenus.bootstrap.min
 //= require_tree .

@@ -1,0 +1,6 @@
+<select  name="product[sub_category_id]" id="product_sub_category_id"  class="form-control">
+<option value=""></option>
+<% @sub_categories.each do |sc|%>
+	<option value="<%= sc.id %>"><%= sc.sub_category_name.capitalize %></option>
+<% end %>
+</select>

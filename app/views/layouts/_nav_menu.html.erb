@@ -1,0 +1,57 @@
+<div style="height: 68px; width: 135px; float: left;  padding-left: 30px;">
+  
+  <img src="/assets/company-logo.jpg" alt="Multipurpose Twitter Bootstrap Template" width="70px">
+</div>
+<!-- Static navbar -->
+<div class="navbar navbar-default" role="navigation" style="margin-bottom: 0px; margin-left: 150px; height: 70px; background-color:#fff; border-color: #FFF;padding-top:19px;">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <!-- <a class="navbar-brand" href="#">Project name</a> -->
+  </div>
+  <div class="navbar-collapse collapse">
+
+    <!-- Left nav -->
+    <ul class="nav navbar-nav">
+      <% @menu_categories.each do |menu_category|%>
+        <li><%= link_to menu_category.menu_text.capitalize, show_product_products_path(:menu_category =>menu_category.id) %>
+        <% if menu_category.categories.length.to_i > 0 %>
+            <ul class="dropdown-menu">
+              <% menu_category.categories.each do |category| %>
+                <li>
+                <%= link_to category.category_name.capitalize, show_product_products_path(:category =>category.id) %>
+                  <% if category.sub_categories.length.to_i > 0 %>
+                    <ul class="dropdown-menu">
+                      <% category.sub_categories.each do |sub_category|%>
+                        <li>
+                        <%= link_to sub_category.sub_category_name.capitalize, show_product_products_path(:sub_category =>sub_category.id) %>
+                      <% end %>
+                    </ul>
+                  <% end %>
+                </li>
+              <%end%>  
+            </ul>
+        <% end %>
+        </li>
+      <%end%>
+      
+    </ul>
+
+    <!-- Right nav -->
+    <ul class="nav navbar-nav navbar-right">
+      
+      <li><a>User</a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+          <li><a href="#">Something else here</a></li>
+        </ul>
+      </li>
+    </ul>
+
+  </div><!--/.nav-collapse -->
+</div>

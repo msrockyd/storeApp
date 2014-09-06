@@ -1,0 +1,17 @@
+<select name="product[category_id]" id="product_category_id" class="form-control">
+<option value=""></option>
+<% @categories.each do |c| %>
+	<option value="<%= c.id %>"><%= c.category_name%></option>
+<% end %>
+</select>
+
+<script type="text/javascript">
+	
+$("#product_category_id").change(function() {
+	alert("aaa");
+	jQuery.get('/products/update_sub_category_select?id=' + $("#product_category_id").val(), function(data){
+        $("#sub_category_select").html(data);
+    });
+});
+
+</script>

@@ -1,4 +1,19 @@
 StoreApp::Application.routes.draw do
+  resources :products do
+    collection do
+      get 'show_product'
+      get 'update_category_select'
+      get 'update_sub_category_select'
+    end 
+  end
+
+  resources :sub_categories
+
+  resources :categories
+
+  resources :menu_categories
+
+  get "dashboard/index"
   devise_for :users, :controllers => { registrations: 'registrations' }
   root "home#index"
   get "home/index"

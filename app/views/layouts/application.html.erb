@@ -5,140 +5,22 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body> 
+
 <!--[if lt IE 7]>
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
 <![endif]-->
 	<!-- Navigation & Logo-->
 	<div class="mainmenu-wrapper">
-	    <div class="container">
-	    	<div class="menuextras">
-				<div class="extras">
-					<ul>
-						<!-- <li class="shopping-cart-items"><i class="glyphicon glyphicon-shopping-cart icon-white"></i> <a href="page-shopping-cart.html"><b>3 items</b></a></li>
-						<li>
-							<div class="dropdown choose-country">
-								<a class="#" data-toggle="dropdown" href="#"><img src="img/flags/gb.png" alt="Great Britain"> UK</a>
-								<ul class="dropdown-menu" role="menu">
-									<li role="menuitem"><a href="#"><img src="img/flags/us.png" alt="United States"> US</a></li>
-									<li role="menuitem"><a href="#"><img src="img/flags/de.png" alt="Germany"> DE</a></li>
-									<li role="menuitem"><a href="#"><img src="img/flags/es.png" alt="Spain"> ES</a></li>
-								</ul>
-							</div>
-						</li> -->
-		        		<li>
-		        		<% if user_signed_in? %>
-						    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-						  <% else %>
-						    <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
-						  <% end %>
-		        		</li>
-		        	</ul>
-				</div>
-	        </div>
-	        <nav id="mainmenu" class="mainmenu">
-				<ul>
-					<li class="logo-wrapper"><a href="index.html"><img src="/assets/company-logo.jpg" alt="Multipurpose Twitter Bootstrap Template" width="70px"></a></li>
-					<li class="active">
-						<a href="#">Home</a>
-					</li>
-					<li>
-						<a href="#">Features</a>
-					</li>
-					<li class="has-submenu">
-						<a href="#">Pages +</a>
-						<div class="mainmenu-submenu">
-							<div class="mainmenu-submenu-inner"> 
-								<div>
-									<h4>Homepage</h4>
-									<ul>
-										<li><a href="#">Homepage Sample 1</a></li>
-										<li><a href="#">Homepage Sample 2</a></li>
-									</ul>
-									<h4>Services & Pricing</h4>
-									<ul>
-										<li><a href="#">Services/Features</a></li>
-										<li><a href="#">Services/Features 3</a></li>
-										<li><a href="#">Services/Features 4</a></li>
-										<li><a href="#">Pricing Table</a></li>
-									</ul>
-								</div>
-								<div>
-									<h4>Our Work (Portfolio)</h4>
-									<ul>
-										<li><a href="#">Portfolio 1</a></li>
-										<li><a href="#">Portfolio 2</a></li>
-										<li><a href="#">Portfolio 4</a></li>
-										<li><a href="#">Portfolio 3</a></li>
-										<li><a href="#">Project Description</a></li>
-									</ul>
-									
-								</div>
-								<div>
-									<h4>eShop</h4>
-									<ul>
-										<li><a href="#">Products listing </a></li>
-										<li><a href="#">Products Slider</a></li>
-										<li><a href="#">Product Details</a></li>
-										<li><a href="#">Shopping Cart</a></li>
-									</ul>
-									
-								</div>
-							</div><!-- /mainmenu-submenu-inner -->
-						</div><!-- /mainmenu-submenu -->
-					</li>
-					<li>
-						<a href="#">Credits</a>
-					</li>
-				</ul>
-			</nav>
-		</div>
-	</div>
+	    
+	        <%= render :partial => "/layouts/nav_menu" %>
+	   	</div>
 
 	<%= yield %>
 
 	<!-- Footer -->
 	<div class="footer">
 		<div class="container">
-	    	<div class="row">
-	    		<div class="col-footer col-md-3 col-xs-6">
-	    			<h3>Our Promotions</h3>
-	    			<div class="portfolio-item">
-						<div class="portfolio-image">
-							<a href="#"><img src="/assets/portfolio6.jpg" alt="Project Name"></a>
-						</div>
-					</div>
-	    		</div>
-	    		<div class="col-footer col-md-3 col-xs-6">
-	    			<h3>Navigate</h3>
-	    			<ul class="no-list-style footer-navigate-section">
-	    				<li><a href="#">What's New</a></li>
-	    				<li><a href="#">Portfolio</a></li>
-	    				<li><a href="#">eShop</a></li>
-	    				<li><a href="#">Services</a></li>
-	    				<li><a href="#">Pricing</a></li>
-	    				<li><a href="#">FAQ</a></li>
-	    			</ul>
-	    		</div>
-	    		
-	    		<div class="col-footer col-md-4 col-xs-6">
-	    			<h3>Contacts</h3>
-	    			<p class="contact-us-details">
-	    				<b>Address:</b> 123 New Street, ABC1 2DE, Delhi, India<br/>
-	    				<b>Phone:</b> +91 123 456789<br/>
-	    				<b>Fax:</b> +91 123 456789<br/>
-	    				<b>Email:</b> <a href="mailto:ms.rockyd@hotmail.com">getintoutch@yourcompanydomain.com</a>
-	    			</p>
-	    		</div>
-	    		<div class="col-footer col-md-2 col-xs-6">
-	    			<h3>Stay Connected</h3>
-	    			<ul class="footer-stay-connected no-list-style">
-	    				<li><a href="#" class="facebook"></a></li>
-	    				<li><a href="#" class="twitter"></a></li>
-	    				<li><a href="#" class="googleplus"></a></li>
-	    			</ul>
-	    		</div>
-	    	</div>
 	    	<div class="row">
 	    		<div class="col-md-12">
 	    			<div class="footer-copyright">&copy; 2014 RockyD. All rights reserved.</div>
@@ -149,5 +31,6 @@
 
 <!-- Javascripts -->
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+
 </body>
 </html>

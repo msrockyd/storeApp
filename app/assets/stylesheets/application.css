@@ -12,7 +12,14 @@
  *= require icomoon-social
  *= require leaflet
  *= require leaflet.ie
+ *= require jquery.smartmenus.bootstrap
  *= require main
  *= require_self
  *= require_tree .
  */
+.col-price {text-align: right; }
+#dashboard_user{background-color: #CFE4F2}
+.control-label{text-align: left !important;}
+.form-control{width: 95% !important;}
+.green_text{color: green;}
+.orange_text{color: orange}
