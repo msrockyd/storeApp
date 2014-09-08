@@ -23,3 +23,20 @@
 //= require jquery.smartmenus
 //= require jquery.smartmenus.bootstrap.min
 //= require_tree .
+
+// function add_cart (product_id) {
+	
+// 	if (Modernizr.localstorage) {
+// 	 var prev_product_ids =  localStorage.product_id
+// 	 if(prev_product_ids==="undefined"){
+// 	 	localStorage.product_id = product_id;
+// 	 } 
+// 	 else{
+// 	 	localStorage.product_id = localStorage.product_id + "," + product_id
+// 	 }
+// 	} else {
+// 	 alert('Cannot store user preferences as your browser do not support local storage');
+// 	}
+// // localStorage.product_id =""
+// jQuery.get('/carts/send_products_id?id=' + localStorage.product_id);	
+// }

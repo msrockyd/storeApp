@@ -34,7 +34,11 @@
 					</div>
 					<!-- Add to Cart Button -->
 					<div class="actions">
-						<a href="page-product-details.html" class="btn"><i class="icon-shopping-cart icon-white"></i> Add to Cart</a>
+						<% if product.stock.eql?(0)%>
+						<a class="btn btn-warning"><i class="icon-shopping-cart icon-white"></i> Out of Stock</a>
+						<%else%>
+						<a href="/carts/send_products_id?product_id=<%= product.id %>" class="btn btn-primary"><i class="icon-shopping-cart icon-white"></i> Add to Cart</a>
+						<%end%>
 					</div>
 				</div>
 				<!-- End Product -->

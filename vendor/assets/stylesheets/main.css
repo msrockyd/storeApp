@@ -2569,13 +2569,8 @@ span.color-red {
 /*--------------------------------------------------------------------------
 +	Buttons Style
 --------------------------------------------------------------------------*/
-.btn {
-  border: 1px solid #4f8db3;
-  -webkit-border-radius: 2px;
-  -webkit-background-clip: padding-box;
-  -moz-border-radius: 2px;
-  -moz-background-clip: padding;
-  border-radius: 2px;
+/*.btn {
+  
   background-clip: padding-box;
   color: #FFFFFF;
   cursor: pointer;
@@ -2592,7 +2587,7 @@ span.color-red {
   box-shadow: none;
   color: #FFF;
   white-space: nowrap;
-}
+}*/
 .btn:hover {
   background: none repeat scroll 0 0 #3b3c41;
   color: #FFF;

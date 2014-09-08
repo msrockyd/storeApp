@@ -66,8 +66,18 @@ class ProductsController < ApplicationController
   end
 
   def show_product
-    menu_category_id = params[:menu_category]
-    @products = Product.where(:menu_category_id => menu_category_id).order("created_at DESC")
+    if params[:menu_category]
+      menu_category_id = params[:menu_category]
+      @products = Product.where(:menu_category_id => menu_category_id).order("created_at DESC")
+    end
+    if params[:category]
+      category_id = params[:category]
+      @products = Product.where(:category_id => category_id).order("created_at DESC")        
+    end
+    if params[:sub_category]
+      sub_category_id = params[:sub_category]
+      @products = Product.where(:sub_category_id => sub_category_id).order("created_at DESC")        
+    end
   end
 
   def update_category_select

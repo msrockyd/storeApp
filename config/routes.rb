@@ -1,4 +1,7 @@
 StoreApp::Application.routes.draw do
+  get "carts/index"
+  get "carts/send_products_id"
+  get "carts/update_base_cart_products_quantiy"
   resources :products do
     collection do
       get 'show_product'
