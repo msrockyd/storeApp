@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap.min
+//= require jquery.smartmenus
+//= require jquery.smartmenus.bootstrap.min
 //= require jquery.bxslider
 //= require jquery.fitvids
 //= require jquery.sequence-min
