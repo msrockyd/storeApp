@@ -1,4 +1,5 @@
 class SubCategoriesController < ApplicationController
+  before_filter :check_admin
   before_action :set_sub_category, only: [:show, :edit, :update, :destroy]
 
   # GET /sub_categories
@@ -21,6 +22,7 @@ class SubCategoriesController < ApplicationController
 
   # GET /sub_categories/1/edit
   def edit
+    @categories = Category.all
   end
 
   # POST /sub_categories
@@ -30,8 +32,9 @@ class SubCategoriesController < ApplicationController
 
     respond_to do |format|
       if @sub_category.save
-        format.html { redirect_to @sub_category, notice: 'Sub category was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @sub_category }
+        flash[:success] = 'Sub category was successfully created.'
+        format.html { redirect_to action: 'index' }
+        format.json { render action: 'index', status: :created, location: @sub_category }
       else
         format.html { render action: 'new' }
         format.json { render json: @sub_category.errors, status: :unprocessable_entity }
@@ -44,7 +47,8 @@ class SubCategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @sub_category.update(sub_category_params)
-        format.html { redirect_to @sub_category, notice: 'Sub category was successfully updated.' }
+        flash[:notice] = 'Sub category was successfully updated.'
+        format.html { redirect_to action: 'index'  }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -58,6 +62,7 @@ class SubCategoriesController < ApplicationController
   def destroy
     @sub_category.destroy
     respond_to do |format|
+      flash[:error] = 'Sub category was successfully deleted.'
       format.html { redirect_to sub_categories_url }
       format.json { head :no_content }
     end

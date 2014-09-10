@@ -3,7 +3,7 @@
   <img src="/assets/company-logo.jpg" alt="Multipurpose Twitter Bootstrap Template" width="70px">
 </div>
 <!-- Static navbar -->
-<div class="navbar navbar-default" role="navigation" style="margin-bottom: 0px; margin-left: 150px; height: 70px; background-color:#fff; border-color: #FFF;padding-top:19px;">
+<div class="navbar navbar-default" role="navigation" style="margin-bottom: 0px; margin-left: 150px; height: 70px; background-color:#fff; border-color: #FFF;padding-top:19px;" >
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
       <span class="sr-only">Toggle navigation</span>
@@ -43,14 +43,19 @@
 
     <!-- Right nav -->
     <ul class="nav navbar-nav navbar-right">
-      
-      <li><a>User</a>
+      <% if user_signed_in? %>
+      <li><a>Signed in as <%= current_user.email %>.</a>
         <ul class="dropdown-menu">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
+          <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
         </ul>
       </li>
+      <%else%>
+      <li><%= link_to "sign in", new_user_session_path %></a>
+        <ul class="dropdown-menu">
+          <li><%= link_to "Sign up", new_user_registration_path %> </li>
+        </ul>
+      </li>
+      <% end %>
     </ul>
 
   </div><!--/.nav-collapse -->

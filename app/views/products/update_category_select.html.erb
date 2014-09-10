@@ -8,7 +8,6 @@
 <script type="text/javascript">
 	
 $("#product_category_id").change(function() {
-	alert("aaa");
 	jQuery.get('/products/update_sub_category_select?id=' + $("#product_category_id").val(), function(data){
         $("#sub_category_select").html(data);
     });

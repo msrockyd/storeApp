@@ -3,6 +3,9 @@
 <head>
   <title>StoreApp</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+<!-- Javascripts -->
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  
   <%= csrf_meta_tags %>
 </head>
 <body> 
@@ -11,9 +14,12 @@
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
 <![endif]-->
 	<!-- Navigation & Logo-->
+
+
 	<div class="mainmenu-wrapper">
-	    
-	        <%= render :partial => "/layouts/nav_menu" %>
+	    	<div id="top-nav-bar">
+	        <%= render :partial => "/layouts/new_nav_bar" %>
+	        </div>
 	   	</div>
 	   
 	<%= yield %>
@@ -27,8 +33,6 @@
 	    </div>
 	</div>
 
-<!-- Javascripts -->
-<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 
 </body>
 </html>

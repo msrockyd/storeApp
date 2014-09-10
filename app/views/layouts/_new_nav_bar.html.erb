@@ -1,0 +1,111 @@
+<div id="navbar-example" class="navbar navbar-static">
+  <div class="navbar-inner">
+    <div class="container" style="width: auto;"> <a class="brand" href="#">JavaScript</a>
+
+      <ul class="nav" role="navigation">
+        <li class="dropdown"> <a id="drop1" href="localhost:3000" role="button" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+
+          <ul
+          class="dropdown-menu" role="menu" aria-labelledby="drop1">
+            <li><a tabindex="-1" href="http://google.com">Action</a>
+
+            </li>
+            <li><a tabindex="-1" href="#anotherAction">Another action</a>
+
+            </li>
+            <li><a tabindex="-1" href="#">Something else here</a>
+
+            </li>
+            <li class="divider"></li>
+            <li><a tabindex="-1" href="#">Separated link</a>
+
+            </li>
+      </ul>
+      </li>
+      <li class="dropdown"> <a href="#" id="drop2" role="button" class="dropdown-toggle" data-toggle="dropdown">Dropdown 2 <b class="caret"></b></a>
+
+        <ul
+        class="dropdown-menu" role="menu" aria-labelledby="drop2">
+          <li><a tabindex="-1" href="#">Action</a>
+
+          </li>
+          <li><a tabindex="-1" href="#">Another action</a>
+
+          </li>
+          <li><a tabindex="-1" href="#">Something else here</a>
+
+          </li>
+          <li class="divider"></li>
+          <li><a tabindex="-1" href="#">Separated link</a>
+
+          </li>
+          </ul>
+      </li>
+      </ul>
+      <ul class="nav pull-right">
+        <li id="fat-menu" class="dropdown"> <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">Dropdown 3 <b class="caret"></b></a>
+
+          <ul
+          class="dropdown-menu" role="menu" aria-labelledby="drop3">
+            <li><a tabindex="-1" href="#">Action</a>
+
+            </li>
+            <li><a tabindex="-1" href="#">Another action</a>
+
+            </li>
+            <li><a tabindex="-1" href="#">Something else here</a>
+
+            </li>
+            <li class="divider"></li>
+            <li><a tabindex="-1" href="#">Separated link</a>
+
+            </li>
+      </ul>
+      </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+    (function ($, window, delay) {
+  // http://jsfiddle.net/AndreasPizsa/NzvKC/
+  var theTimer = 0;
+  var theElement = null;
+    var theLastPosition = {x:0,y:0};
+  $('[data-toggle]')
+    .closest('li')
+    .on('mouseenter', function (inEvent) {
+    if (theElement) theElement.removeClass('open');
+    window.clearTimeout(theTimer);
+    theElement = $(this);
+
+    theTimer = window.setTimeout(function () {
+      theElement.addClass('open');
+    }, delay);
+  })
+    .on('mousemove', function (inEvent) {
+        if(Math.abs(theLastPosition.x - inEvent.ScreenX) > 4 || 
+           Math.abs(theLastPosition.y - inEvent.ScreenY) > 4)
+        {
+            theLastPosition.x = inEvent.ScreenX;
+            theLastPosition.y = inEvent.ScreenY;
+            return;
+        }
+        
+    if (theElement.hasClass('open')) return;
+    window.clearTimeout(theTimer);
+    theTimer = window.setTimeout(function () {
+      theElement.addClass('open');
+    }, delay);
+  })
+    .on('mouseleave', function (inEvent) {
+    window.clearTimeout(theTimer);
+    theElement = $(this);
+    theTimer = window.setTimeout(function () {
+      theElement.removeClass('open');
+    }, delay);
+  });
+})(jQuery, window, 200); // 200 is the delay in milliseconds
+</script>

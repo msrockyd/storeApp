@@ -1,4 +1,5 @@
 class MenuCategoriesController < ApplicationController
+  before_filter :check_admin
   before_action :set_menu_category, only: [:show, :edit, :update, :destroy]
 
   # GET /menu_categories

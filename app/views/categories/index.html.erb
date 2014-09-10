@@ -4,11 +4,14 @@
       <!-- Sidebar -->
         <%= render :partial => "layouts/admin_sidebar"%>
       <!-- End Sidebar -->
+
       <div class="col-sm-10">
+      <%= render partial: "layouts/flash_messages", flash: flash %> 
         <div class="blog-post blog-single-post">
           <div class="single-post-title">
-            <h3>Category List</h3>
-          </div><br>
+            <h3>Category List</h3> 
+          </div>
+
           <div class="single-post-info">
           <i class="glyphicon"></i>
             <%= link_to 'New Category', new_category_path, :class=> "pull-right" %>
@@ -17,13 +20,12 @@
           <div class="single-post-content">
             <div class="bs-example">
                 <!-- <table class="table"> -->
-                <table class="table table-striped table-bordered" cellspacing="0" width="100%"" id="dashboard_user">
+                <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="dashboard_user">
                     <thead>
                         <tr>
                             <tr>
                               <th>Category name</th>
                               <th>Menu category</th>
-                              <th></th>
                               <th></th>
                               <th></th>
                             </tr>
@@ -33,8 +35,7 @@
                        <% @categories.each do |category| %>
                           <tr>
                             <td><%= category.category_name %></td>
-                            <td><%= category.menu_category_id %></td>
-                            <td><%= link_to 'Show', category %></td>
+                            <td><%= show_menu_category_text(category.menu_category_id) %></td>
                             <td><%= link_to 'Edit', edit_category_path(category) %></td>
                             <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                           </tr>

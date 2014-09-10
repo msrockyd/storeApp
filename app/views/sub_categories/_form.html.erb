@@ -11,15 +11,38 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :sub_category_name %><br>
-    <%= f.text_field :sub_category_name %>
+  <div class="row">
+  <div class="col-sm-offset-2 col-sm-8">
+    <div class="form-group">
+      <label for="inputEmail3" class="col-sm-4 control-label">Sub Category</label>
+      <div class="col-sm-8">
+        <%= f.text_field :sub_category_name,:required => true, :class => "form-control", :placeholder=>"Sub Category" %>
+      </div>
+    </div>
+    </div>
+  </div>  
+  <br/>
+  <div class="row">
+  <div class="col-sm-offset-2 col-sm-8">
+    <div class="form-group">
+      <label for="inputEmail3" class="col-sm-4 control-label">Menu Category</label>
+      <div class="col-sm-8">
+        <%= f.select(:category_id,  @categories.collect{|p| [ p.category_name, p.id ]},  {}, {required: 'true', class: 'form-control'}) %>
+      </div>
+    </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :category_id %><br>
-    <%= f.select :category_id, @categories.collect{|p| [ p.category_name, p.id ]} %>
+
+  <br/>    
+  <div class="row">
+  <div class="col-sm-offset-2 col-sm-8">
+    <div class="form-group">
+      <label for="inputEmail3" class="col-sm-4 control-label"></label>
+      <div class="col-sm-8 actions">
+        <%= f.submit "Create Menu", :class=>"btn btn-success" %>
+      </div>
+    </div>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
 <% end %>
