@@ -95,7 +95,7 @@
 						<!-- Action Buttons -->
 						<div class="pull-right">
 							<a href="#" class="btn btn-grey"><i class="glyphicon glyphicon-refresh"></i> UPDATE</a>
-							<a href="#" class="btn"><i class="glyphicon glyphicon-shopping-cart icon-white"></i> CHECK OUT</a>
+							<a href="<%= new_order_path(cart_id: @products.first.base_carts.first) %>" class="btn"><i class="glyphicon glyphicon-shopping-cart icon-white"></i> CHECK OUT</a>
 						</div>
 					</div>
 				</div>

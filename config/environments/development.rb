@@ -28,4 +28,13 @@ StoreApp::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  config.after_initialize do
+    ActiveMerchant::Billing::Base.mode = :test
+    ::GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(
+      :login => "prakashsejwani-facilitator_api1.yahoo.com",
+      :password => "1410243461",
+      :signature => "An5ns1Kso7MWUdW4ErQKJJJ4qi4-AYeUYA9K6AZ1giVPXJV-uMQ8s.-e"
+    )
+  end
 end

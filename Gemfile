@@ -52,4 +52,9 @@ gem 'paperclip'
 # gem 'capistrano', group: :development
 
 # Use debugger
-# gem 'debugger', group: [:development, :test]
+gem 'pry', group: [:development, :test]
+
+gem 'activemerchant'
+gem 'stripe'
+#gem 'active_merchant_ccavenue', github: 'kevivmatrix/active_merchant_ccavenue'
+# gem 'paypal-sdk-rest'
