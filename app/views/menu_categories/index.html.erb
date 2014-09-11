@@ -17,11 +17,10 @@
           <div class="single-post-content">
             <div class="bs-example">
                 <!-- <table class="table"> -->
-                <table class="table table-striped table-bordered" cellspacing="0" width="100%"" id="dashboard_user">
+                <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="dashboard_user">
                     <thead>
                         <tr>
                             <th>Menu text</th>
-                            <th></th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -30,7 +29,6 @@
                       <% @menu_categories.each do |menu_category|%>
                         <tr>
                           <td><%= menu_category.menu_text %></td>
-                          <td><%= link_to 'Show', menu_category %></td>
                           <td><%= link_to 'Edit', edit_menu_category_path(menu_category) %></td>
                           <td><%= link_to 'Destroy', menu_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                         </tr>

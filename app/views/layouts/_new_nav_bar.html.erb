@@ -1,0 +1,58 @@
+<div style="height: 68px; width: 135px; float: left;  padding-left: 30px;">
+  
+  <img src="/assets/company-logo.jpg" alt="Multipurpose Twitter Bootstrap Template" width="70px">
+</div>
+<!-- Static navbar -->
+<div class="navbar navbar-default" role="navigation" style="margin-bottom: 0px; margin-left: 150px; height: 70px; background-color:#fff; border-color: #FFF;padding-top:17px;" >
+  <div class="navbar-header">
+
+   <div id='cssmenu'>
+      <ul>
+      <% @menu_categories.each do |menu_category|%>
+        <% if menu_category.categories.length.to_i > 0 %>
+            <li class='has-sub'><%= link_to menu_category.menu_text.capitalize, show_product_products_path(:menu_category =>menu_category.id) %>
+                <ul>
+                  <% menu_category.categories.each do |category| %>
+                    <% if category.sub_categories.length.to_i > 0 %>
+                      <li class="has-sub"><%= link_to category.category_name.capitalize, show_product_products_path(:category =>category.id) %>
+                          <ul>
+                            <% category.sub_categories.each do |sub_category|%>
+                              <li>
+                                <%= link_to sub_category.sub_category_name.capitalize, show_product_products_path(:sub_category =>sub_category.id) %>
+                              </li>
+                            <%end%>
+                          </ul>
+                      </li>
+                    <%else%><% category.sub_categories.each do |sub_category|%>
+                      <li>
+                        <%= link_to sub_category.sub_category_name.capitalize, show_product_products_path(:sub_category =>sub_category.id) %>
+                      </li>
+                    <%end%>
+                    <li><%= link_to category.category_name.capitalize, show_product_products_path(:category =>category.id) %></li>
+                    <%end%>
+                  <% end %>
+                </ul>
+            </li>
+        <% else %>
+         <li><%= link_to menu_category.menu_text.capitalize, show_product_products_path(:menu_category =>menu_category.id) %></li>
+        <%end%>
+        
+      <%end %>
+
+      </ul>
+   </div>
+
+  </div>
+  <div class="pull-right user-detail">
+    <div>
+    <% if user_signed_in? %>
+      Signed in as <%= current_user.email %>.  &nbsp; 
+      <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+    <%else%>
+      <%= link_to "Sign in", new_user_session_path %> &nbsp;
+      <%= link_to "Sign up", new_user_registration_path %>
+    <%end%>
+    &nbsp;<span class="glyphicon glyphicon-user"></span>
+  </div>
+  </div>
+</div>

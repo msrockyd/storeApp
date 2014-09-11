@@ -11,11 +11,27 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :menu_text %><br>
-    <%= f.text_field :menu_text %>
+
+  <div class="row">
+  <div class="col-sm-offset-2 col-sm-8">
+    <div class="form-group">
+      <label for="inputEmail3" class="col-sm-2 control-label">Menu Text</label>
+      <div class="col-sm-10">
+        <%= f.text_field :menu_text,:required => true, :class => "form-control", :placeholder=>"Last Name" %>
+      </div>
+    </div>
+    </div>
+  </div>  
+  <br/>    
+  <div class="row">
+  <div class="col-sm-offset-2 col-sm-8">
+    <div class="form-group">
+      <label for="inputEmail3" class="col-sm-2 control-label"></label>
+      <div class="col-sm-10 actions">
+        <%= f.submit "Create Menu", :class=>"btn btn-success" %>
+      </div>
+    </div>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
 <% end %>

@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
+  before_filter :check_admin, only: [:show, :edit, :update, :destroy]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+
 
   # GET /products
   # GET /products.json
@@ -22,6 +24,9 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
+    @menu_categories =  MenuCategory.all
+    @categories = Category.all
+    @sub_categories = SubCategory.all
   end
 
   # POST /products
@@ -32,7 +37,8 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
+        flash[:success] = 'Product was successfully created.'
+        format.html { redirect_to @product }
         format.json { render action: 'show', status: :created, location: @product }
       else
         format.html { render action: 'new' }
@@ -46,7 +52,8 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+        flash[:success] =  'Product was successfully updated.'
+        format.html { redirect_to @product }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -59,6 +66,7 @@ class ProductsController < ApplicationController
   # DELETE /products/1.json
   def destroy
     @product.destroy
+    flash[:error] = " 'Product was successfully deleted.'"
     respond_to do |format|
       format.html { redirect_to products_url }
       format.json { head :no_content }

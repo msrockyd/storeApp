@@ -1,6 +1,9 @@
 StoreApp::Application.routes.draw do
   resources :orders
 
+  resources :admin_users
+
+  devise_for :users
   get "carts/index"
   get "carts/send_products_id"
   get "carts/update_base_cart_products_quantiy"
@@ -18,8 +21,7 @@ StoreApp::Application.routes.draw do
 
   resources :menu_categories
 
-  get "dashboard/index"
-  devise_for :users, :controllers => { registrations: 'registrations' }
+  get "dashboard/index", :controllers => { registrations: 'registrations' }
   root "home#index"
   get "home/index"
   # The priority is based upon order of creation: first created -> highest priority.

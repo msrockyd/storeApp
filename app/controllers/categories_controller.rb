@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  before_filter :check_admin
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   # GET /categories
@@ -20,6 +21,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1/edit
   def edit
+    @menu_categories = MenuCategory.all
   end
 
   # POST /categories
@@ -29,8 +31,9 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.save
-        format.html { redirect_to @category, notice: 'Category was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @category }
+        flash[:success] = 'Category was successfully Created.'
+        format.html { redirect_to action: 'index' }
+        format.json { render action: 'index', status: :created, location: @category }
       else
         format.html { render action: 'new' }
         format.json { render json: @category.errors, status: :unprocessable_entity }
@@ -43,7 +46,8 @@ class CategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @category.update(category_params)
-        format.html { redirect_to @category, notice: 'Category was successfully updated.' }
+        flash[:notice] = 'Category was successfully updated.'
+        format.html { redirect_to action: 'index' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -57,6 +61,7 @@ class CategoriesController < ApplicationController
   def destroy
     @category.destroy
     respond_to do |format|
+      flash[:error] ="Category was successfully deleted."
       format.html { redirect_to categories_url }
       format.json { head :no_content }
     end

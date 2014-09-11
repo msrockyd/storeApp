@@ -1,5 +1,6 @@
 <div class="section">
         <div class="container">
+        <%= render partial: "layouts/flash_messages", flash: flash %> 
           <div class="row">
             <!-- Product Image & Available Colors -->
             <div class="col-sm-6">
@@ -69,7 +70,7 @@
                 <td>
                 <% if user_signed_in?%>
                   <% if current_user.is_admin? %>
-                    <%= link_to 'Back', products_path, :class => "btn btn" %>
+                    <%= link_to 'Back', products_path, :class => "btn btn-primary" %>
                   <%end%>
                   <%else%>
                     <a href="#" class="btn btn"><i class="icon-shopping-cart icon-white"></i> Add to Cart</a>
@@ -129,42 +130,7 @@
       </div>
     </div>
 
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
-
-<p>
-  <strong>Manufacturer:</strong>
-  <%= @product.manufacturer %>
-</p>
-
-<p>
-  <strong>Menu category:</strong>
-  <%= @product.menu_category_id %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @product.category_id %>
-</p>
-
-<p>
-  <strong>Sub category:</strong>
-  <%= @product.sub_category_id %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

@@ -1,0 +1,70 @@
+<%= form_for(@admin_user,:html => { :multipart => true, :class=>"form-horizontal", :role=>"form" } ) do |f| %>
+  <% if @admin_user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@admin_user.errors.count, "error") %> prohibited this admin_user from being saved:</h2>
+
+      <ul>
+      <% @admin_user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+  <div class="col-sm-offset-2 col-sm-8">
+    <div class="form-group">
+      <label for="inputEmail3" class="col-sm-2 control-label">First Name</label>
+      <div class="col-sm-10">
+        <%= f.text_field :first_name,:required => true, :class => "form-control", :placeholder=>"First Name" %>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <div class="row">
+  <div class="col-sm-offset-2 col-sm-8">
+    <div class="form-group">
+      <label for="inputEmail3" class="col-sm-2 control-label">Last Name</label>
+      <div class="col-sm-10">
+        <%= f.text_field :last_name,:required => true, :class => "form-control", :placeholder=>"Last Name" %>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <div class="row">
+  <div class="col-sm-offset-2 col-sm-8">
+    <div class="form-group">
+      <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+      <div class="col-sm-10">
+        <%= f.text_field :user_id,:required => true, :class => "form-control", :placeholder=>"Email" %>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <div class="row">
+  <div class="col-sm-offset-2 col-sm-8">
+    <div class="form-group">
+      <label for="inputEmail3" class="col-sm-2 control-label">Password</label>
+      <div class="col-sm-10">
+        <%= f.text_field :user_id,:required => true, :class => "form-control", :placeholder=>"Email" %>
+      </div>
+    </div>
+    </div>
+  </div>
+  
+
+  <div class="row">
+  <div class="col-sm-offset-2 col-sm-8">
+    <div class="form-group">
+      <label for="inputEmail3" class="col-sm-2 control-label"></label>
+      <div class="col-sm-10 actions">
+        <%= f.submit "Create Admin", :class=>"btn btn-success" %>
+      </div>
+    </div>
+    </div>
+  </div>
+
+<% end %>
