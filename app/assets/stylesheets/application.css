@@ -12,8 +12,8 @@
  *= require icomoon-social
  *= require leaflet
  *= require leaflet.ie
- *= require jquery.smartmenus.bootstrap
  *= require main
+ *= require styles
  *= require_self
  *= require_tree .
  */

@@ -13,13 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap.min
-//= require jquery.smartmenus
-//= require jquery.smartmenus.bootstrap.min
 //= require jquery.bxslider
 //= require jquery.fitvids
 //= require jquery.sequence-min
-//= require main-menu
 //= require modernizr.min
-//= require template
+//= require script
 //= require turbolinks
 //= require_tree .

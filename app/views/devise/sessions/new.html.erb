@@ -1,0 +1,38 @@
+
+
+<div class="section">
+	    	<div class="container">
+				<div class="row">
+					<div class="col-sm-6 col-sm-offset-3">
+						<div class="basic-login">
+							<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+								<div class="form-group">
+		        				 	<label for="login-username"><i class="icon-user"></i> <b>Username or Email</b></label>
+									<%= f.email_field :email, autofocus: true, :class => "form-control", :placeholder => "Email" %>
+								</div>
+								<div class="form-group">
+		        				 	<label for="login-password"><i class="icon-lock"></i> <b>Password</b></label>
+									<%= f.password_field :password,:class => "form-control", :placeholder => "Password" %>
+								</div>
+								<div class="form-group">
+									<label class="checkbox">
+										<%= f.check_box :remember_me %> Remember me
+									</label>
+									<a href="page-password-reset.html" class="forgot-password">Forgot password?</a>
+									<button type="submit" class="btn pull-right btn-success">Login</button>
+									<div class="clearfix"></div>
+								</div>
+							<% end %>
+						</div>
+						<div class="social-login">
+						<div class="not-member">
+							<p>Not a member? <a href="page-register.html">Register here</a></p>
+						</div
+					</div>
+					</div>
+					
+				</div>
+			</div>
+		</div
+
+>

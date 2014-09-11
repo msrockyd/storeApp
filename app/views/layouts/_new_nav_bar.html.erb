@@ -1,111 +1,58 @@
-<div id="navbar-example" class="navbar navbar-static">
-  <div class="navbar-inner">
-    <div class="container" style="width: auto;"> <a class="brand" href="#">JavaScript</a>
+<div style="height: 68px; width: 135px; float: left;  padding-left: 30px;">
+  
+  <img src="/assets/company-logo.jpg" alt="Multipurpose Twitter Bootstrap Template" width="70px">
+</div>
+<!-- Static navbar -->
+<div class="navbar navbar-default" role="navigation" style="margin-bottom: 0px; margin-left: 150px; height: 70px; background-color:#fff; border-color: #FFF;padding-top:17px;" >
+  <div class="navbar-header">
 
-      <ul class="nav" role="navigation">
-        <li class="dropdown"> <a id="drop1" href="localhost:3000" role="button" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-
-          <ul
-          class="dropdown-menu" role="menu" aria-labelledby="drop1">
-            <li><a tabindex="-1" href="http://google.com">Action</a>
-
+   <div id='cssmenu'>
+      <ul>
+      <% @menu_categories.each do |menu_category|%>
+        <% if menu_category.categories.length.to_i > 0 %>
+            <li class='has-sub'><%= link_to menu_category.menu_text.capitalize, show_product_products_path(:menu_category =>menu_category.id) %>
+                <ul>
+                  <% menu_category.categories.each do |category| %>
+                    <% if category.sub_categories.length.to_i > 0 %>
+                      <li class="has-sub"><%= link_to category.category_name.capitalize, show_product_products_path(:category =>category.id) %>
+                          <ul>
+                            <% category.sub_categories.each do |sub_category|%>
+                              <li>
+                                <%= link_to sub_category.sub_category_name.capitalize, show_product_products_path(:sub_category =>sub_category.id) %>
+                              </li>
+                            <%end%>
+                          </ul>
+                      </li>
+                    <%else%><% category.sub_categories.each do |sub_category|%>
+                      <li>
+                        <%= link_to sub_category.sub_category_name.capitalize, show_product_products_path(:sub_category =>sub_category.id) %>
+                      </li>
+                    <%end%>
+                    <li><%= link_to category.category_name.capitalize, show_product_products_path(:category =>category.id) %></li>
+                    <%end%>
+                  <% end %>
+                </ul>
             </li>
-            <li><a tabindex="-1" href="#anotherAction">Another action</a>
+        <% else %>
+         <li><%= link_to menu_category.menu_text.capitalize, show_product_products_path(:menu_category =>menu_category.id) %></li>
+        <%end%>
+        
+      <%end %>
 
-            </li>
-            <li><a tabindex="-1" href="#">Something else here</a>
-
-            </li>
-            <li class="divider"></li>
-            <li><a tabindex="-1" href="#">Separated link</a>
-
-            </li>
       </ul>
-      </li>
-      <li class="dropdown"> <a href="#" id="drop2" role="button" class="dropdown-toggle" data-toggle="dropdown">Dropdown 2 <b class="caret"></b></a>
+   </div>
 
-        <ul
-        class="dropdown-menu" role="menu" aria-labelledby="drop2">
-          <li><a tabindex="-1" href="#">Action</a>
-
-          </li>
-          <li><a tabindex="-1" href="#">Another action</a>
-
-          </li>
-          <li><a tabindex="-1" href="#">Something else here</a>
-
-          </li>
-          <li class="divider"></li>
-          <li><a tabindex="-1" href="#">Separated link</a>
-
-          </li>
-          </ul>
-      </li>
-      </ul>
-      <ul class="nav pull-right">
-        <li id="fat-menu" class="dropdown"> <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">Dropdown 3 <b class="caret"></b></a>
-
-          <ul
-          class="dropdown-menu" role="menu" aria-labelledby="drop3">
-            <li><a tabindex="-1" href="#">Action</a>
-
-            </li>
-            <li><a tabindex="-1" href="#">Another action</a>
-
-            </li>
-            <li><a tabindex="-1" href="#">Something else here</a>
-
-            </li>
-            <li class="divider"></li>
-            <li><a tabindex="-1" href="#">Separated link</a>
-
-            </li>
-      </ul>
-      </li>
-      </ul>
-    </div>
+  </div>
+  <div class="pull-right user-detail">
+    <div>
+    <% if user_signed_in? %>
+      Signed in as <%= current_user.email %>.  &nbsp; 
+      <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+    <%else%>
+      <%= link_to "Sign in", new_user_session_path %> &nbsp;
+      <%= link_to "Sign up", new_user_registration_path %>
+    <%end%>
+    &nbsp;<span class="glyphicon glyphicon-user"></span>
+  </div>
   </div>
 </div>
-
-
-<script type="text/javascript">
-    (function ($, window, delay) {
-  // http://jsfiddle.net/AndreasPizsa/NzvKC/
-  var theTimer = 0;
-  var theElement = null;
-    var theLastPosition = {x:0,y:0};
-  $('[data-toggle]')
-    .closest('li')
-    .on('mouseenter', function (inEvent) {
-    if (theElement) theElement.removeClass('open');
-    window.clearTimeout(theTimer);
-    theElement = $(this);
-
-    theTimer = window.setTimeout(function () {
-      theElement.addClass('open');
-    }, delay);
-  })
-    .on('mousemove', function (inEvent) {
-        if(Math.abs(theLastPosition.x - inEvent.ScreenX) > 4 || 
-           Math.abs(theLastPosition.y - inEvent.ScreenY) > 4)
-        {
-            theLastPosition.x = inEvent.ScreenX;
-            theLastPosition.y = inEvent.ScreenY;
-            return;
-        }
-        
-    if (theElement.hasClass('open')) return;
-    window.clearTimeout(theTimer);
-    theTimer = window.setTimeout(function () {
-      theElement.addClass('open');
-    }, delay);
-  })
-    .on('mouseleave', function (inEvent) {
-    window.clearTimeout(theTimer);
-    theElement = $(this);
-    theTimer = window.setTimeout(function () {
-      theElement.removeClass('open');
-    }, delay);
-  });
-})(jQuery, window, 200); // 200 is the delay in milliseconds
-</script>
