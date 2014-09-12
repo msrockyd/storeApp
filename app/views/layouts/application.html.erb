@@ -3,7 +3,9 @@
 <head>
   <title>StoreApp</title>
   <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+  <%#= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <%= javascript_include_tag "https://js.stripe.com/v1/", "application" %>
   <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
 </head>
 <body> 
@@ -18,8 +20,19 @@
 	    	<div id="top-nav-bar">
 	        <%= render :partial => "/layouts/new_nav_bar" %>
 	        </div>
-	   	</div>
-	   
+	</div>
+	<div class="container">
+	   <div class="col-sm-offset-2 col-md-8 col-sm-8">
+	        <form class="navbar-form" role="search" action="products/show_product">
+	        <div class="input-group">
+	            <input type="text" class="form-control" placeholder="Search Products" name="search_data" id="search_data">
+	            <div class="input-group-btn">
+	                <button class="btn btn-blue" type="submit"><i class="glyphicon glyphicon-search" ></i>Search</button>
+	            </div>
+	        </div>
+	        </form>
+        </div>
+        </div>
 	<%= yield %>
 
 	<!-- Footer -->
@@ -30,9 +43,6 @@
 	    	</div>
 	    </div>
 	</div>
-
-<!-- Javascripts -->
-<%= javascript_include_tag "https://js.stripe.com/v1/", "application", "data-turbolinks-track" => true %>
 
 </body>
 </html>

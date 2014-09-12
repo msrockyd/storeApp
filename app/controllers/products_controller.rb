@@ -74,6 +74,9 @@ class ProductsController < ApplicationController
   end
 
   def show_product
+    if params[:search_data]
+      
+    end
     if params[:menu_category]
       menu_category_id = params[:menu_category]
       @products = Product.where(:menu_category_id => menu_category_id).order("created_at DESC")
