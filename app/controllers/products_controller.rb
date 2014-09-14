@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_filter :check_admin, only: [:show, :edit, :update, :destroy,:index]
+  before_filter :check_admin, only: [:edit, :update, :destroy,:index]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
 

@@ -71,9 +71,14 @@
                 <% if user_signed_in?%>
                   <% if current_user.is_admin? %>
                     <%= link_to 'Back', products_path, :class => "btn btn-primary" %>
+                    <%else%>
+                    <a href="/carts/send_products_id?product_id=<%= params[:id]%>" class="btn btn-blue"><i class="icon-shopping-cart icon-white"></i> Add to Cart</a
                   <%end%>
-                  <%else%>
-                    <a href="#" class="btn btn"><i class="icon-shopping-cart icon-white"></i> Add to Cart</a>
+                <%else%>
+                <br><br><br>
+                    <a href="/carts/send_products_id?product_id=<%= params[:id]%>" class="btn btn-blue"><i class="icon-shopping-cart icon-white"></i> Add to Cart</a>
+
+                    <a href="/" class="btn btn-green"><i class="icon-shopping-cart icon-white"></i> Continue Shopping</a>
                 <% end %>
                 
                 </td>
@@ -130,7 +135,3 @@
       </div>
     </div>
 
-
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
