@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_filter :check_admin, only: [:show, :edit, :update, :destroy]
+  before_filter :check_admin, only: [:show, :edit, :update, :destroy,:index]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
 
@@ -75,7 +75,7 @@ class ProductsController < ApplicationController
 
   def show_product
     if params[:search_data]
-      
+      @products = Product.where("name LIKE ?", "%#{params[:search_data]}%").order("created_at DESC")
     end
     if params[:menu_category]
       menu_category_id = params[:menu_category]

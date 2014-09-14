@@ -5,7 +5,7 @@
   <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
   <%#= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
-  <%= javascript_include_tag "https://js.stripe.com/v1/", "application" %>
+  <%= javascript_include_tag "https://js.stripe.com/v2/", "application" %>
   <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
 </head>
 <body> 
@@ -14,23 +14,37 @@
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
 <![endif]-->
 	<!-- Navigation & Logo-->
-
-
 	<div class="mainmenu-wrapper">
 	    	<div id="top-nav-bar">
+
+			<div class="topcorner">
+				<a href="/">
+				<i class="glyphicon glyphicon-home icon-white"></i>
+				</a> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+				<a href="/carts/index">
+				<i class="glyphicon glyphicon-shopping-cart icon-white"></i>
+				<%= @cart_count %> Items</a>
+
+			</div>
+
 	        <%= render :partial => "/layouts/new_nav_bar" %>
 	        </div>
 	</div>
 	<div class="container">
 	   <div class="col-sm-offset-2 col-md-8 col-sm-8">
-	        <form class="navbar-form" role="search" action="products/show_product">
+
+	   <% if params[:controller].eql?("products") or params[:controller].eql?("home")%>
+		
+	        <form class="navbar-form" role="search" action="/products/show_product">
 	        <div class="input-group">
-	            <input type="text" class="form-control" placeholder="Search Products" name="search_data" id="search_data">
+	            <input type="text" class="form-control" placeholder="Search Products" name="search_data" id="search_data" style="width: 100%">
 	            <div class="input-group-btn">
 	                <button class="btn btn-blue" type="submit"><i class="glyphicon glyphicon-search" ></i>Search</button>
 	            </div>
 	        </div>
 	        </form>
+
+	        <% end %>
         </div>
         </div>
 	<%= yield %>
@@ -46,3 +60,14 @@
 
 </body>
 </html>
+<style type="text/css">
+ 
+</style>
+<script type="text/javascript">
+	$(function() {
+    var availableTags = <%=raw @pro %>;
+    $( "#search_data" ).autocomplete({
+    source: availableTags
+    });
+});
+</script>

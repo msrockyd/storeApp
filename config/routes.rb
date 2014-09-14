@@ -1,5 +1,12 @@
 StoreApp::Application.routes.draw do
-  resources :orders
+  get "admin_users/index"
+  get "order_detail/index"
+  get "order_detail/show"
+  resources :orders do
+    collection do
+      get 'check_login'
+    end
+  end
 
   resources :admin_users
 
@@ -7,6 +14,7 @@ StoreApp::Application.routes.draw do
   get "carts/index"
   get "carts/send_products_id"
   get "carts/update_base_cart_products_quantiy"
+  get "home/login_last_url"
   resources :products do
     collection do
       get 'show_product'

@@ -6,6 +6,13 @@ class ApplicationController < ActionController::Base
   
   def data_for_menu
     @menu_categories = MenuCategory.all
+    @pro = Product.select("name").collect{|m| m.name}
+
+    if user_signed_in?
+    @cart_count = Product.joins(:base_carts).where("(base_carts.cart_id is null or base_carts.order_id is null) and base_carts.user_id =#{current_user.id}").count
+   else
+    @cart_count = Product.joins(:base_carts).where("(base_carts.cart_id is null or base_carts.order_id is null) and base_carts.ip ='#{request.remote_ip}'").count
+   end 
   end 
 
 
@@ -17,7 +24,15 @@ class ApplicationController < ActionController::Base
    # end
 
    if current_user.is_admin?
-   		"/dashboard/index"
+   		return "/dashboard/index"
+     else
+      last_url = cookies[:last_url]
+      cookies[:last_url]=""
+      if last_url.blank?
+        return '/'
+      else
+      return last_url
+      end
    end
 
   end

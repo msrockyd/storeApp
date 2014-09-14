@@ -25,12 +25,14 @@
   # POST /admin_users
   # POST /admin_users.json
   def create
-    raise params.inspect
+    # raise params.inspect
     @admin_user = AdminUser.new(admin_user_params)
-
+    user = User.create({:email => params[:email], :password => params[:password], :password_confirmation => params[:password], :is_admin => true })
+    @admin_user.user_id = user.id
     respond_to do |format|
       if @admin_user.save
-        format.html { redirect_to @admin_user, notice: 'Admin user was successfully created.' }
+        flash[:success] = 'Admin user was successfully created.'
+        format.html { redirect_to @admin_user}
         format.json { render action: 'show', status: :created, location: @admin_user }
       else
         format.html { render action: 'new' }
@@ -56,6 +58,8 @@
   # DELETE /admin_users/1
   # DELETE /admin_users/1.json
   def destroy
+    user = User.find(@admin_user.user_id)
+    user.destroy
     @admin_user.destroy
     respond_to do |format|
       format.html { redirect_to admin_users_url }

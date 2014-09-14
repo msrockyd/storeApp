@@ -1,29 +1,76 @@
-<p id="notice"><%= notice %></p>
+<div class="section">
+  <div class="container">
+    <div class="row">
+    <div class="col-sm-12">
+    <p id="notice"><%= notice %></p>
+      <div class="blog-post blog-single-post">
+        <div class="single-post-title">
+          <h3>Order Detail</h3>
+        </div>
+        <div class="single-post-info">
+          <i class="glyphicon"></i>
+        </div>
+        
+        <div class="single-post-content">
+          <div class="bs-example">
+          <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="dashboard_user">
+            <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Order Date</th>
+                        <th>Total Amount</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody> 
+                  <tr>
+                    <td><%= @order.id %></td>
+                    <td><%= @order.created_at %></td>
+                    <td><%= @order.amount %></td>
+                    <td><%= @order.name %></td>
+                    <td><%= @order.last_name %></td>
+                    <td><%= @order.email %></td>
+                  
+                  </tr>
+                </tbody>
+            
+          </table>
+          </div>
+        </div>
+      </div>
+    </div>    
+    </div>
 
-<p>
-  <strong>Cart:</strong>
-  <%= @order.cart_id %>
-</p>
+    <div class="row">
+      <div class="col-md-12">
+      <table class="shopping-cart">
+        <% @products.each do |product|%>
+        <tr>
+          <td class="image"><a href="#">
+            <%= image_tag product.image.url %></a></td>
+            <!-- Shopping Cart Item Description & Features -->
+          <td>
+          <td>
+            <div class="cart-item-title"><a href="#">
+            <%= product.name %></a></div>
+            <div class="feature">Size: <b><%= product.size%></b></div>
+          </td>
+          <td class="feature">
+           <b>Quantity : </b><%= product.base_carts.first.quantity   %>
+          </td>
+          <td class="feature">
+           <b>Price : </b><%= product.price * product.base_carts.first.quantity   %>
+          </td>
 
-<p>
-  <strong>Ip address:</strong>
-  <%= @order.ip_address %>
-</p>
+        </tr>    
+        <% end %>
+      </table>
+      </div>
+    </div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @order.name %>
-</p>
+  </div>
+</div>
 
-<p>
-  <strong>Card type:</strong>
-  <%= @order.card_type %>
-</p>
 
-<p>
-  <strong>Card expires on:</strong>
-  <%= @order.card_expires_on %>
-</p>
-
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>

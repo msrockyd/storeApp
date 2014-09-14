@@ -10,11 +10,14 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
+    @order = Order.find(params[:id])
+    @products =  Product.joins(:base_carts).where(:base_carts => {:order_id=> params[:id], :user_id => current_user.id})
   end
 
   # GET /orders/new
   def new
     @order = Order.new
+    @total_price = Cart.find(params[:cart_id].to_i).total_price
   end
 
   # GET /orders/1/edit
@@ -24,10 +27,12 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
+      # raise params.inspect
     @order = Order.new(order_params)
     @order.ip_address = request.remote_ip
+    # @order.last_name = params[]
     respond_to do |format|
-      if @order.save_with_payment
+      if @order.save_with_payment(current_user.id)
         format.html { redirect_to @order, notice: 'Order was successfully processed.' }
         format.json { head :no_content }
       else
@@ -73,6 +78,34 @@ class OrdersController < ApplicationController
     end
   end
 
+  def check_login
+    product_price = 0
+    params[:id].each do |id|
+      base_cart = BaseCart.find(id)
+      product = Product.find(base_cart.product_id)
+      product_price += product.price * base_cart.quantity
+    end
+    # raise params.inspect
+    if user_signed_in?
+      cart = Cart.create({:ip_address => request.remote_ip, :total_price => product_price, :user_id => current_user.id})
+      params[:id].each do |id|
+        base_cart = BaseCart.find(id)
+        base_cart.update({:cart_id => cart.id, :user_id => current_user.id})
+      end
+      redirect_to new_order_path(:cart_id => cart.id)
+    else
+      cart = Cart.create({:ip_address => request.remote_ip, :total_price => product_price})
+      params[:id].each do |id|
+        base_cart = BaseCart.find(id)
+        base_cart.update({:cart_id => cart.id})
+      end
+      cookies[:last_url] = '/orders/new/?cart_id='+cart.id.to_s
+      redirect_to new_user_session_path
+      
+    end  
+    # raise params.inspect
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
@@ -81,6 +114,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:cart_id, :ip_address, :name, :last_name, :card_type, :card_expires_on, :card_number, :card_verification, :stripe_card_token, :email)
+      params.require(:order).permit(:cart_id,:amount, :ip_address, :name, :last_name, :card_type, :card_expires_on, :card_number, :card_verification, :stripe_card_token, :email)
     end
 end

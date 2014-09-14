@@ -12,11 +12,29 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require bootstrap.min
 //= require jquery.bxslider
 //= require jquery.fitvids
 //= require jquery.sequence-min
 //= require modernizr.min
 //= require script
+//= require orders
+//= require dropit
 //= require turbolinks
 //= require_tree .
+
+function check_login (total_url, host) {
+	var last_url = total_url.replace(host, "").replace("http://", "");
+
+	// alert(total_url.replace(host, "").replace("http://", ""));
+
+	$.ajax({
+		    type: "GET",
+		    url: '/home/login_last_url',
+		    dataType: "JSON",
+		    data: {"last_url": last_url}
+		  });
+}
+
+

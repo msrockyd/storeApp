@@ -1,15 +1,21 @@
 class Order < ActiveRecord::Base
-  belongs_to :base_cart, foreign_key: :cart_id
+  belongs_to :cart, foreign_key: :cart_id
   has_many :transactions, :class_name => "OrderTransaction"
   
-  attr_accessor :card_number, :card_verification, :last_name
+  attr_accessor :card_number, :card_verification
   attr_accessor :stripe_card_token
   
-  def save_with_payment
+  def save_with_payment(user_id)
     if valid?
       charge = Stripe::Charge.create(description: email, amount: price_in_cents, :currency => "USD", card: stripe_card_token)
       self.stripe_customer_token = charge.id
+      self.user_id = user_id
       save!
+      cart.update({:order_id => self.id})
+      base_carts = BaseCart.where(:cart_id => cart.id)
+      base_carts.each do |base_cart|
+        base_cart.update({:order_id => self.id, :user_id => user_id})
+      end
     end
   rescue Stripe::InvalidRequestError => e
     logger.error "Stripe error while creating customer: #{e.message}"
@@ -29,7 +35,7 @@ class Order < ActiveRecord::Base
   def price_in_cents
     #TODO should be total price of all products in cart
     #(cart.total_price*100).round
-    (base_cart.product.price*100).round
+    (cart.total_price*100).round
   end
 
   # private

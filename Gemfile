@@ -56,5 +56,6 @@ gem 'pry', group: [:development, :test]
 
 gem 'activemerchant'
 gem 'stripe'
+gem 'jquery-ui-rails'
 #gem 'active_merchant_ccavenue', github: 'kevivmatrix/active_merchant_ccavenue'
 # gem 'paypal-sdk-rest'
