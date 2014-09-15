@@ -74,7 +74,7 @@
   font-size: 12px;
   text-decoration: none;
   text-transform: uppercase;
-  color: red
+  color: red;
   -webkit-transition: color .2s ease;
   -moz-transition: color .2s ease;
   -ms-transition: color .2s ease;
@@ -316,4 +316,45 @@
 .user-detail{
 padding-top: 18px; 
 padding-right: 20px;
+}
+
+
+
+ @font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url(asset_path('glyphicons-halflings-regular.eot'));
+  src: url(asset_path('glyphicons-halflings-regular.eot?#iefix')) format('embedded-opentype'), url(asset_path('glyphicons-halflings-regular.woff')) format('woff'), url(asset_path('glyphicons-halflings-regular.ttf')) format('truetype'), url(asset_path('glyphicons-halflings-regular.svg#glyphicons_halflingsregular')) format('svg');
+}
+.col-price {text-align: right; }
+#dashboard_user{background-color: #CFE4F2;}
+.control-label{text-align: left !important;}
+.form-control{width: 95% !important;}
+.green_text{color: green;}
+.orange_text{color: orange;}
+.topcorner{
+   position:absolute;
+   top:12;
+   left:90%;
+   z-index: 1212;
+  }
+ 
+ .menu ul.dropit-submenu {
+    background-color: #fff;
+    border: 1px solid #b2b2b2;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    margin: 3px 0 0 1px;
+    padding: 6px 0;
+}
+.menu ul.dropit-submenu a {
+    color: #7a868e;
+    display: block;
+    font-size: 14px;
+    line-height: 25px;
+    padding: 0 18px;
+}
+.menu ul.dropit-submenu a:hover {
+    background: none repeat scroll 0 0 #248fc1;
+    color: #fff;
+    text-decoration: none;
 }

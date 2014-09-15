@@ -64,10 +64,6 @@
  
 </style>
 <script type="text/javascript">
-	$(function() {
-    var availableTags = <%=raw @pro %>;
-    $( "#search_data" ).autocomplete({
-    source: availableTags
-    });
-});
+autocomplete_data(<%=raw @pro %>);
+
 </script>

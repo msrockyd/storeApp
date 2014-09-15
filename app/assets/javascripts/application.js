@@ -38,3 +38,17 @@ function check_login (total_url, host) {
 }
 
 
+$('.menu').dropit();
+
+// $(function() {
+//     var availableTags = <%=raw @pro %>;
+//     $( "#search_data" ).autocomplete({
+//     source: availableTags
+//     });
+// });
+function autocomplete_data (data) {
+	var availableTags = data;
+    $( "#search_data" ).autocomplete({
+    source: availableTags
+    });
+}
