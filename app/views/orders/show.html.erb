@@ -46,7 +46,8 @@
     <div class="row">
       <div class="col-md-12">
       <table class="shopping-cart">
-        <% @products.each do |product|%>
+        <% @base_carts.each do |base_cart|%>
+        <% product = get_product_detail(base_cart.product_id)%>
         <tr>
           <td class="image"><a href="#">
             <%= image_tag product.image.url %></a></td>
@@ -58,10 +59,10 @@
             <div class="feature">Size: <b><%= product.size%></b></div>
           </td>
           <td class="feature">
-           <b>Quantity : </b><%= product.base_carts.first.quantity   %>
+           <b>Quantity : </b><%= base_cart.quantity   %>
           </td>
           <td class="feature">
-           <b>Price : </b><%= product.price * product.base_carts.first.quantity   %>
+           <b>Price : </b><%= product.price *  base_cart.quantity  %>
           </td>
 
         </tr>    
@@ -69,6 +70,34 @@
       </table>
       </div>
     </div>
+
+    <div class="row">
+    <div class="col-sm-12">
+      <div class="blog-post blog-single-post">
+        <div class="single-post-title">
+          <h3>Shipping Address</h3>
+        </div>
+        <div class="single-post-info">
+          <i class="glyphicon"></i>
+        </div>
+        
+        <div class="single-post-content">
+          <div class="bs-example col-sm-offset-1">
+              <h3><%= @ship_address.first_name %> &nbsp; <%= @ship_address.last_name %></h3><br>
+             <%= @ship_address.address %>  <br>
+              <%= @ship_address.city %> <br>
+              <%= @ship_address.state %> <br>
+             <b> Pin : <%= @ship_address.pin %> <br>
+               Phone : <%= @ship_address.phone_number %>
+              </b>
+          </div>
+        </div>
+      </div>
+    </div>    
+    </div>
+
+
+
 
   </div>
 </div>

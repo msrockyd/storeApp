@@ -4,15 +4,58 @@
 	    	<div class="container">
 
 	    		<div class="row">
-					<div class="col-sm-6 col-sm-offset-3">
-						<h2>New Order</h2>
+		    		<div class="col-sm-offset-1 col-sm-5">
+		    			<br>
+		    			<h3>Shipping Address</h3>
+		    		</div>
+					<div class="col-sm-5">
+						<br>
+						<h3>Payment Details</h3>
 						<%= render partial: "layouts/flash_messages", flash: flash %>
 					</div>
 				</div>	
 				<div class="row">
-					<div class="col-sm-6 col-sm-offset-3">
+					<%= form_for @order do |f| %>
+					<div class="col-sm-offset-1 col-sm-5">
 						<div class="basic-login">
-							<%= form_for @order do |f| %>
+							<div class="form-group">
+	        				 	<label for="login-username"><i class="icon-user"></i> <b>Recipient First Name</b></label>
+								<input type="text" required="required"  name="recipient[first_name]" class="form-control">
+							</div>
+							<div class="form-group">
+	        				 	<label for="login-username"><i class="icon-user"></i> <b>Recipient Last Name</b></label>
+								<input type="text" required="required"  name="recipient[last_name]" class="form-control">
+							</div>
+							<div class="form-group">
+	        				 	<label for="login-username"><i class="icon-user"></i> <b>Phone Number</b></label>
+								<input type="number" required="required"  name="recipient[phone_number]" class="form-control">
+							</div>
+
+							<div class="form-group">
+	        				 	<label for="login-username"><i class="icon-user"></i> <b>Address</b></label>
+	        				 	<textarea required  name="recipient[address]" class="form-control"> </textarea> 
+								
+							</div>
+
+							<div class="form-group">
+	        				 	<label for="login-username"><i class="icon-user"></i> <b>PIN</b></label>
+								<input type="number" required="required"  name="recipient[pin]" class="form-control">
+							</div>
+
+							<div class="form-group">
+	        				 	<label for="login-username"><i class="icon-user"></i> <b>City</b></label>
+								<input type="tel" required="required"  name="recipient[city]" class="form-control">
+							</div>
+							<div class="form-group">
+	        				 	<label for="login-username"><i class="icon-user"></i> <b>State/Region</b></label>
+								<input type="tel" required="required"  name="recipient[state]" class="form-control">
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-5">
+						<div class="basic-login">
+							
 					
 								<%= f.hidden_field :cart_id, value: params[:cart_id].to_i%>
   								<%= f.hidden_field :stripe_card_token %>
@@ -33,7 +76,7 @@
 
 								<div class="form-group">
 		        				 	<label for="login-username"><i class="icon-user"></i> <b>Email</b></label>
-									<%= f.text_field :email,  :class => "form-control", :placeholder => "Email",:required => true %>
+									<%= f.email_field :email,  :class => "form-control", :value => current_user.email, :readonly => true %>
 								</div>
 								<div class="form-group">
 		        				 	<label for="login-username"><i class="icon-user"></i> <b>Card Type</b></label>
@@ -61,8 +104,7 @@
 									
 									<div class="clearfix"></div>
 									<div id="stripe_error" style="color:red;">
-  <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
-</div>
+									</div>
 								</div>
 							<% end %>
 						</div>
@@ -70,5 +112,6 @@
 					</div>
 					
 				</div>
+				<!-- end of paymeny -->
 			</div>
 		</div>

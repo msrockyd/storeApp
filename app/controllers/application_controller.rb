@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     if user_signed_in?
     @cart_count = Product.joins(:base_carts).where("(base_carts.cart_id is null or base_carts.order_id is null) and base_carts.user_id =#{current_user.id}").count
    else
-    @cart_count = Product.joins(:base_carts).where("(base_carts.cart_id is null or base_carts.order_id is null) and base_carts.ip ='#{request.remote_ip}'").count
+    @cart_count = Product.joins(:base_carts).where("(base_carts.cart_id is null or base_carts.order_id is null) and base_carts.ip ='#{request.remote_ip}'  and user_id is null").count
    end 
   end 
 

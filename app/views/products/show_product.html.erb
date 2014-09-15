@@ -17,12 +17,10 @@
 						<h3><a href="/products/<%= product.id%>"><%= product.name %></a></h3>
 					</div>
 					<!-- Product Available Colors-->
-					<div class="colors">
-						<span class="color-white"></span>
-						<span class="color-black"></span>
-						<span class="color-blue"></span>
-						<span class="color-orange"></span>
-						<span class="color-green"></span>
+					<div class="colors" style="color: orange">
+						<% if product.stock <= 3 %>
+                            <b>Only <%= product.stock %> Left !! </b>
+                        <% end %>
 					</div>
 					<!-- Product Price-->
 					<div class="price">
@@ -34,14 +32,15 @@
 					</div>
 					<!-- Add to Cart Button -->
 					<div class="actions">
-						<% if product.stock.eql?(0)%>
+						<% if product.stock <= 0%>
 						<a class="btn btn-warning"><i class="icon-shopping-cart icon-white"></i> Out of Stock</a>
 						<%else%>
 						<a href="/carts/send_products_id?product_id=<%= product.id %>" class="btn btn-primary"><i class="icon-shopping-cart icon-white"></i> Add to Cart</a>
 						
+						<%end%>
+						
 						<a href="/products/<%= product.id%>" class="btn btn-info"><i class="icon-shopping-cart icon-white"></i> Product Detail</a>
 
-						<%end%>
 					</div>
 				</div>
 				<!-- End Product -->

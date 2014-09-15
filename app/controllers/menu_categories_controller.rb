@@ -29,7 +29,8 @@ class MenuCategoriesController < ApplicationController
 
     respond_to do |format|
       if @menu_category.save
-        format.html { redirect_to @menu_category, notice: 'Menu category was successfully created.' }
+        flash[:success] = 'Menu was successfully Created.'
+        format.html { redirect_to action: 'index'  }
         format.json { render action: 'show', status: :created, location: @menu_category }
       else
         format.html { render action: 'new' }

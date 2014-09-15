@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta content="text/html; charset=UTF-8"/>
+	</head>
+	<body>
+	<h3>Dear Customer,</h3>
+		<p>Your Order Number <b><%= @orders.id %></b> is <b>CONFIRMED.</b></p>
+		<br>
+		<p>We will deliver your order in the shortest possible time.</p>
+		<br>
+		<h3>You ordered for…</h3>
+		<table  width="100%">
+			<thead>
+				<tr style="background-color: #9999FF;" >
+					<th width="30%">Order ID</th>
+					<th  width="30%">Order Date</th>
+					<th  width="30%">Total Amount</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><%= @orders.id %></td>
+					<td><%= @orders.created_at %></td>
+					<td><%= @orders.amount %></td>		
+				</tr>
+
+			</tbody>
+		</table>
+	</body>
+</html>	

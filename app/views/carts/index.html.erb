@@ -1,5 +1,5 @@
 <div class="section">
-<% unless @products.blank? %>
+<% unless @base_carts.blank? %>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
@@ -17,10 +17,11 @@
 					<!-- Shopping Cart Item -->
 					<% total_price  = 0%>
 					<% @ids = []%>
-					<% @products.each do |product|%>
-					<% quantity = product.base_carts.first.quantity %>
-					
-					<%@ids.push(product.base_carts.first.id) %>
+					<% @base_carts.each do |product|%>
+					<% quantity = product.quantity %>
+					<% total_price += quantity * product.price %>
+					<% p_id =  product.id %>
+					<%@ids.push(product.id) %>
 					<tr>
 						<!-- Shopping Cart Item Image -->
 						<td class="image"><a href="#">
@@ -34,14 +35,14 @@
 						</td>
 						<!-- Shopping Cart Item Quantity -->
 						<td class="quantity">
-							<%= select_tag ('pro'+product.id.to_s), options_for_select(1..product.stock,quantity.to_i), :class=>"form-control input-sm input-micro", :onchange => "change_price(#{product.id},  #{product.price}, #{product.base_carts.first.id} )" %>
+							<%= select_tag ('pro'+p_id.to_s), options_for_select(1..product.stock,quantity.to_i), :class=>"form-control input-sm input-micro", :onchange => "change_price(#{product.id},  #{product.price}, #{product.id} )" %>
 						</td>
 						<!-- Shopping Cart Item Price -->
 						<td class="price" id="pro_price<%= product.id %>">$<%= product.price * quantity %></td>
 						<!-- Shopping Cart Item Actions -->
 						<td class="actions">
 							&nbsp;&nbsp;
-							<a href="#" class="btn btn-xs btn-grey"><i class="glyphicon glyphicon-trash"></i></a>
+							<a href="/carts/delete?id=<%= product.id %>" class="btn btn-xs btn-grey"><i class="glyphicon glyphicon-trash"></i></a>
 						</td>
 					</tr>
 					
@@ -96,6 +97,8 @@
 				</table>
 				<!-- Action Buttons -->
 				<div class="pull-right">
+					<a href="/" class="btn btn-green">&nbsp&nbsp; CONTINUE SHOPPING &nbsp;</a>
+
 					<a href="<%= check_login_orders_path(:id => @ids) %>" class="btn btn-blue">&nbsp;<i class="glyphicon glyphicon-shopping-cart icon-white"></i> &nbsp; CHECK OUT &nbsp;</a>
 				</div>
 			</div>
@@ -118,7 +121,7 @@
 		function change_price (p_id, p_price,base_cart_id) {
 			var p_quantity = $("#pro"+p_id).val();
 			$("#pro_price"+p_id).html('$' + (p_quantity * p_price));
-			jQuery.get('/carts/update_base_cart_products_quantiy?id=' + localStorage.product_id);	
+			// jQuery.get('/carts/update_base_cart_products_quantiy?id=' + localStorage.product_id);	
 			$.ajax({
 				    type: "GET",
 				    url: '/carts/update_base_cart_products_quantiy/?cart_id=' + base_cart_id,

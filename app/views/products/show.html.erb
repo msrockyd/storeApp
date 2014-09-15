@@ -66,19 +66,29 @@
               </tr>
               <!-- Add to Cart Button -->
               <tr>
-                <td>&nbsp;</td>
+                <td>
+                  <br><br>
+                <a href="/" class="btn btn-green"><i class="icon-shopping-cart icon-white"></i> Continue Shopping</a></td>
                 <td>
                 <% if user_signed_in?%>
                   <% if current_user.is_admin? %>
                     <%= link_to 'Back', products_path, :class => "btn btn-primary" %>
                     <%else%>
-                    <a href="/carts/send_products_id?product_id=<%= params[:id]%>" class="btn btn-blue"><i class="icon-shopping-cart icon-white"></i> Add to Cart</a
+                    <br><br>
+                    <% if @product.stock.to_i > 0%>
+                    <a href="/carts/send_products_id?product_id=<%= params[:id]%>" class="btn btn-blue"><i class="icon-shopping-cart icon-white"></i> Add to Cart</a>
+                    <% else %>
+                    <a href="#" class="btn btn-warning"><i class="icon-shopping-cart icon-white"></i> Out of Stock</a>
+                    <% end %>
                   <%end%>
                 <%else%>
-                <br><br><br>
+                <br><br>
+                <% if @product.stock.to_i > 0%>
                     <a href="/carts/send_products_id?product_id=<%= params[:id]%>" class="btn btn-blue"><i class="icon-shopping-cart icon-white"></i> Add to Cart</a>
-
-                    <a href="/" class="btn btn-green"><i class="icon-shopping-cart icon-white"></i> Continue Shopping</a>
+                 <% else %>
+                    <a href="#" class="btn btn-warning"><i class="icon-shopping-cart icon-white"></i> Out of Stock</a>
+                    <% end %>
+                    
                 <% end %>
                 
                 </td>

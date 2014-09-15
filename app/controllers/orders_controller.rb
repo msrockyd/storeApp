@@ -11,7 +11,10 @@ class OrdersController < ApplicationController
   # GET /orders/1.json
   def show
     @order = Order.find(params[:id])
-    @products =  Product.joins(:base_carts).where(:base_carts => {:order_id=> params[:id], :user_id => current_user.id})
+    #@products =  Product.joins(:base_carts).where(:base_carts => {:order_id=> params[:id], :user_id => current_user.id})
+    @base_carts = BaseCart.where(:order_id => params[:id])
+    @ship_address = ShippingAddress.where(:order_id => params[:id]).first
+
   end
 
   # GET /orders/new
@@ -33,6 +36,13 @@ class OrdersController < ApplicationController
     # @order.last_name = params[]
     respond_to do |format|
       if @order.save_with_payment(current_user.id)
+        ShippingAddress.create({:order_id => @order.id, :user_id => current_user.id, :first_name => params[:recipient][:first_name], :last_name => params[:recipient][:last_name], :phone_number => params[:recipient][:phone_number], :address => params[:recipient][:address], :pin => params[:recipient][:pin], :city => params[:recipient][:city], :state => params[:recipient][:state]})
+
+        base_carts = BaseCart.where(:order_id => @order.id)
+        product_stock_update(base_carts)
+
+        #ProductMailer.order_detail(current_user.email, @order).deliver
+
         format.html { redirect_to @order, notice: 'Order was successfully processed.' }
         format.json { head :no_content }
       else
@@ -115,5 +125,13 @@ class OrdersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
       params.require(:order).permit(:cart_id,:amount, :ip_address, :name, :last_name, :card_type, :card_expires_on, :card_number, :card_verification, :stripe_card_token, :email)
+    end
+
+    def product_stock_update(base_carts)
+      base_carts.each do |base_cart|
+        product =  Product.find(base_cart.product_id)
+        new_quantity = product.stock.to_i - base_cart.quantity.to_i
+        product.update({:stock => new_quantity })
+      end
     end
 end

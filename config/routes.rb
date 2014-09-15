@@ -14,6 +14,7 @@ StoreApp::Application.routes.draw do
   get "carts/index"
   get "carts/send_products_id"
   get "carts/update_base_cart_products_quantiy"
+  get "carts/delete"
   get "home/login_last_url"
   resources :products do
     collection do
