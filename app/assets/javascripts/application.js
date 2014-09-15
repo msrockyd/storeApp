@@ -18,6 +18,7 @@
 //= require jquery.fitvids
 //= require jquery.sequence-min
 //= require modernizr.min
+//= require stripe_v2
 //= require script
 //= require orders
 //= require dropit
@@ -38,7 +39,9 @@ function check_login (total_url, host) {
 }
 
 
-$('.menu').dropit();
+function assign_dropit () {
+  $('.menu').dropit();
+}
 
 // $(function() {
 //     var availableTags = <%=raw @pro %>;
