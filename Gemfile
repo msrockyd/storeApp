@@ -4,8 +4,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.1'
 
 # Use mysql as the database for Active Record
-# gem 'mysql2'
-gem 'pg'
+gem 'mysql2'
+# gem 'pg'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -35,6 +35,7 @@ end
 
 gem 'devise'
 gem 'paperclip'
+gem 'will_paginate-bootstrap'
 # gem 'activeadmin', github: 'activeadmin'
 # gem 'jquery-ui-rails'
 # gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
