@@ -338,9 +338,9 @@ padding-right: 20px;
 .topcorner{
    position:absolute;
    top:12;
-   left:81%;
+   left:75%;
    z-index: 1212;
-   width: 250px;
+   width: 300px;
    text-align: right;
    padding-right: 10px; 
 
@@ -348,9 +348,9 @@ padding-right: 20px;
 .topcorner_user{
    position:absolute;
    
-   left:81%;
+   left:75%;
    z-index: 1212;
-   width: 250px;
+   width: 295px;
    text-align: right; 
    margin-top: 48px;
   }    
