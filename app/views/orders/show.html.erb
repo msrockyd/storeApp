@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
     <div class="col-sm-12">
-    <p id="notice"><%= notice %></p>
+    <%= render partial: "layouts/flash_messages", flash: flash %>
       <div class="blog-post blog-single-post">
         <div class="single-post-title">
           <h3>Order Detail</h3>
@@ -21,7 +21,8 @@
                         <th>Total Amount</th>
                         <th>First Name</th>
                         <th>Last Name</th>
-                        <th>Email</th>
+                        <th>Email</th>  
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody> 
@@ -32,6 +33,7 @@
                     <td><%= @order.name %></td>
                     <td><%= @order.last_name %></td>
                     <td><%= @order.email %></td>
+                    <td><%= @order.order_status%></td>
                   
                   </tr>
                 </tbody>

@@ -1,10 +1,13 @@
 StoreApp::Application.routes.draw do
+  get "track/index"
+  get "track/show"
   get "admin_users/index"
   get "order_detail/index"
   get "order_detail/show"
   resources :orders do
     collection do
       get 'check_login'
+      get 'update_order_status'
     end
   end
 
@@ -33,6 +36,7 @@ StoreApp::Application.routes.draw do
   get "dashboard/index", :controllers => { registrations: 'registrations' }
   root "home#index"
   get "home/index"
+  get "home/show"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

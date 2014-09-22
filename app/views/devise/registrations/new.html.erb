@@ -28,11 +28,14 @@
 		        				 	<label for="login-password"><i class="icon-lock"></i> <b>Password confirmation</b></label>
 		        				 	<%= f.password_field :password_confirmation, autocomplete: "off",:class => "form-control", :placeholder => "Password confirmation", :required => true %>
 								</div>
+								<div class="form-group">
+								<input type="checkbox" id="myCheck" name="test" required>
+								I agree to the Store <a href="">Terms of Service</a>
+								</div>
 
 								<div class="form-group">
 									
 									<button type="submit" class="btn btn-blue">Sign up</button>
-									
 								</div>
 
 							<% end %>

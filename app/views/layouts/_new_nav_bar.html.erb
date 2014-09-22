@@ -43,32 +43,7 @@
    </div>
 
   </div>
-  <div class="pull-right user-detail">
-    <div>
-    
-    
-    <% if user_signed_in? %>
-       
-      
-      <ul class="menu pull-left dropit">
-      <li>
-        <a href="#"><span class="glyphicon glyphicon-user"></span><%= current_user.email %>.  &nbsp;</a>
-        <ul class="dropit-submenu">
-        <% if current_user.is_admin%>
-            <li><a href="/dashboard/index">Dashboard</a></li>
-        <% end%>
-            <li><a href="/order_detail/index">Order Detail</a></li>
-            <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
-        </ul>
-      </li>
-      </ul>
-    <%else%>
-      <%= link_to "Sign in", new_user_session_path, :id => 'signin_link', :onclick => "check_login('#{request.original_url}','#{request.host_with_port}');"  %> &nbsp;
-      <%= link_to "Sign up", new_user_registration_path, :id => 'signin_link' %>
-    <%end%>
-    
-  </div>
-  </div>
+  
 </div>
 <script type="text/javascript">
 

@@ -1,0 +1,126 @@
+<%= javascript_include_tag "orders" %>
+<%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
+<div class="section">
+<%= render partial: "layouts/flash_messages", flash: flash %>
+	<%= form_for @order do |f| %>
+	<div class="container">
+		<div class="row">
+			<!-- Sidebar -->
+			<div class="col-sm-4 blog-sidebar">
+				<br>
+				<h4>Shipping Address</h4>
+				<ul class="recent-posts">
+					<li class="shipping_address">
+						<input type="text" class="form-control" required="required"  name="recipient[first_name]" placeholder="First Name">
+					</li> 
+					<li class="shipping_address">
+						<input type="text" class="form-control" required="required"  name="recipient[last_name]" placeholder="Last Name">
+					</li> 
+					<li class="shipping_address">
+						<input type="number" required="required"  name="recipient[phone_number]" class="form-control" placeholder="Phone Number">
+					</li> 
+					<li class="shipping_address">
+						<textarea required  name="recipient[address]" class="form-control" placeholder="Address Line"></textarea>
+					</li> 
+					<li class="shipping_address">
+						<input type="number" required="required"  name="recipient[pin]" class="form-control" placeholder="PIN">
+					</li> 
+					<li class="shipping_address">
+						<input type="tel" required="required"  name="recipient[city]" class="form-control" placeholder="City">
+					</li>
+					<li class="shipping_address">
+						<input type="tel" required="required"  name="recipient[state]" class="form-control" placeholder="State / Region" >
+					</li> 
+
+				</ul>
+
+			</div>
+			<!-- End Sidebar -->
+			<div class="col-sm-8">
+				<div class="blog-post blog-single-post">
+					<div class="single-post-title">
+						<h3>Payment Detail</h3>
+					</div>
+					<div class="single-post-info">
+						
+					</div>
+					<!-- Comments -->
+					<div class="post-coments">
+						<%= f.hidden_field :cart_id, value: params[:cart_id].to_i%>
+  						<%= f.hidden_field :stripe_card_token %>									
+						<!-- Comments Form -->
+						<h4>Leave a Comment</h4>
+						<div class="comment-form-wrapper">
+							<form class="">
+
+								<div class="form-group">
+									
+									<div class="row">
+
+									  <div class="col-xs-6">
+									    <div class="input-group">
+									      <div class="input-group-addon">@ </div>
+									      <%= f.email_field :email,  :class => "form-control", :value => current_user.email, :readonly => true %>
+									    </div>
+									  </div>
+									  
+									  <div class="col-xs-6" style="padding-left: 0px; padding-right: 33px;">
+									    <div class="form-group">
+										    <div class="input-group">
+										      <div class="input-group-addon">Total Amount</div>
+										      <input type="text" required="required"  name="order[amount]" id="order_amount" class="form-control" value="<%= @total_price %>" readonly>
+										    </div>
+										  </div>
+									  </div>
+
+									</div>
+								</div>
+
+		        				<div class="form-group">
+		        				 	<label for="comment-name"><i class="glyphicon glyphicon-user"></i> <b>Your name</b></label>
+									
+									<div class="row">
+									  <div class="col-xs-6">
+									    <%= f.text_field :name, autofocus: true, :class => "form-control", :placeholder => "First Name",:required => true %>
+									  </div>
+									  <div class="col-xs-6" style="padding-left: 0px; padding-right: 33px;">
+									    <%= f.text_field :last_name, :class => "form-control", :placeholder => "Last Name",:required => true %>
+									  </div>
+									</div>
+								</div>
+								<div class="form-group">
+		        				 	<label for="comment-name"><i class="glyphicon glyphicon-briefcase"></i> <b>Card Type</b></label>
+									radio btn
+								</div>
+								<div class="form-group">
+									<label for="comment-email"><i class="glyphicon glyphicon-credit-card"></i> <b>Card Number</b></label>
+									<div class="row">
+									  <div class="col-xs-6">
+									    <%= f.text_field :card_number, :class => "form-control", :placeholder => "Card number",:required => true %>
+									  </div>
+									  <div class="col-xs-6" style="padding-left: 0px; padding-right: 33px;">
+									    <%= f.text_field :card_verification, :class => "form-control", :placeholder => "CVV",:required => true %>
+
+									  </div>
+									</div>
+								</div>
+								<div class="form-group">
+		        				 	<label for="comment-name"><i class="glyphicon glyphicon-calendar"></i> <b>Card expires on </b></label>
+									<%= f.date_select :card_expires_on, :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+15), :add_month_numbers => true %>
+								</div>
+								<div class="form-group">
+									<%= f.submit "Place your order", :class=>"btn btn-blue"%>
+								</div>
+								<div class="clearfix"></div>
+		        			</form>
+						</div>
+						<!-- End Comment Form -->
+					</div>
+					<!-- End Comments -->
+				</div>
+			</div>
+			<!-- End Blog Post -->
+		</div>
+	</div>
+	<%end%>
+</div>

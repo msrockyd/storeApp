@@ -75,19 +75,19 @@ class ProductsController < ApplicationController
 
   def show_product
     if params[:search_data]
-      @products = Product.where("name LIKE ?", "%#{params[:search_data]}%").order("created_at DESC")
+      @products = Product.where("name LIKE ?", "%#{params[:search_data]}%").order("created_at DESC").paginate(:page => params[:page], :per_page => 6)
     end
     if params[:menu_category]
       menu_category_id = params[:menu_category]
-      @products = Product.where(:menu_category_id => menu_category_id).order("created_at DESC")
+      @products = Product.where(:menu_category_id => menu_category_id).order("created_at DESC").paginate(:page => params[:page], :per_page => 6)
     end
     if params[:category]
       category_id = params[:category]
-      @products = Product.where(:category_id => category_id).order("created_at DESC")        
+      @products = Product.where(:category_id => category_id).order("created_at DESC").paginate(:page => params[:page], :per_page => 6)        
     end
     if params[:sub_category]
       sub_category_id = params[:sub_category]
-      @products = Product.where(:sub_category_id => sub_category_id).order("created_at DESC")        
+      @products = Product.where(:sub_category_id => sub_category_id).order("created_at DESC").paginate(:page => params[:page], :per_page => 6)        
     end
   end
 

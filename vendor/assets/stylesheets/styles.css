@@ -42,7 +42,7 @@
   top: 0;
   left: 0;
   height: 3px;
-  background: #009ae1;
+  /*background: #009ae1;*/ 
   -webkit-transition: all 0.25s ease-out;
   -moz-transition: all 0.25s ease-out;
   -ms-transition: all 0.25s ease-out;
@@ -70,10 +70,11 @@
   text-align: right;
 }
 #cssmenu > ul > li > a {
-  padding: 20px;
-  font-size: 12px;
+  padding: 18px;
+  font-size: 14px;
+  color: #7C7C7C;
   text-decoration: none;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   -webkit-transition: color .2s ease;
   -moz-transition: color .2s ease;
   -ms-transition: color .2s ease;
@@ -82,7 +83,7 @@
 }
 #cssmenu > ul > li:hover > a,
 #cssmenu > ul > li.active > a {
-  color: #009ae1;
+  color: #7C7C7C;
 }
 #cssmenu > ul > li.has-sub > a {
   padding-right: 25px;
@@ -93,8 +94,8 @@
   right: 10px;
   width: 4px;
   height: 4px;
-  border-bottom: 1px solid #000000;
-  border-right: 1px solid #000000;
+/*  border-bottom: 1px solid #000000;
+  border-right: 1px solid #000000;*/
   content: "";
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
@@ -113,6 +114,9 @@
 #cssmenu ul ul {
   position: absolute;
   left: -9999px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #d8d9d9;
 }
 #cssmenu li:hover > ul {
   left: auto;
@@ -123,6 +127,7 @@
 #cssmenu ul ul ul {
   margin-left: 100%;
   top: 0;
+   /*here soutom*/
 }
 #cssmenu.align-right ul ul ul {
   margin-left: 0;
@@ -137,15 +142,15 @@
   transition: height .2s ease;
 }
 #cssmenu ul li:hover > ul > li {
-  height: 32px;
+  height: 34px;
 }
 #cssmenu ul ul li a {
   padding: 10px 20px;
   width: 160px;
-  font-size: 12px;
-  background: #E6E6E6;
+  font-size: 14px;
+  background: #fff;
   text-decoration: none;
-  color: #2E2E2E;
+  color: #7C7C7C;
   -webkit-transition: color .2s ease;
   -moz-transition: color .2s ease;
   -ms-transition: color .2s ease;
@@ -155,7 +160,7 @@
 #cssmenu ul ul li:hover > a,
 #cssmenu ul ul li a:hover {
   color: #0B173B;
-  font-size: 14px;
+  background-color: #F8F8F8;
 }
 #cssmenu ul ul li.has-sub > a::after {
   position: absolute;
@@ -333,9 +338,22 @@ padding-right: 20px;
 .topcorner{
    position:absolute;
    top:12;
-   left:90%;
+   left:81%;
    z-index: 1212;
+   width: 250px;
+   text-align: right;
+   padding-right: 10px; 
+
   }
+.topcorner_user{
+   position:absolute;
+   
+   left:81%;
+   z-index: 1212;
+   width: 250px;
+   text-align: right; 
+   margin-top: 48px;
+  }    
  
  .menu ul.dropit-submenu {
     background-color: #fff;
@@ -356,4 +374,7 @@ padding-right: 20px;
     background: none repeat scroll 0 0 #248fc1;
     color: #fff;
     text-decoration: none;
+}
+.shipping_address{
+   padding: 5px 0 5px 11px !important; 
 }

@@ -41,7 +41,7 @@ class OrdersController < ApplicationController
         base_carts = BaseCart.where(:order_id => @order.id)
         product_stock_update(base_carts)
 
-        #ProductMailer.order_detail(current_user.email, @order).deliver
+        ProductMailer.order_detail(current_user.email, @order).deliver # send order conf mail
 
         format.html { redirect_to @order, notice: 'Order was successfully processed.' }
         format.json { head :no_content }
@@ -114,6 +114,14 @@ class OrdersController < ApplicationController
       
     end  
     # raise params.inspect
+  end
+
+  def update_order_status
+    # raise params.inspect
+    order = Order.find(params["order_id"])
+    order.update({:order_status => params[:status]})
+    flash[:success] = "Order status for the order ID #{order.id} was successfully updated."
+    redirect_to :action => :index
   end
 
   private

@@ -55,3 +55,7 @@ function autocomplete_data (data) {
     source: availableTags
     });
 }
+
+function show_track_modal() {
+	$('#track_modal').modal('show');  
+}

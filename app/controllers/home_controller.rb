@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-  	@products = Product.all.order("created_at DESC")
+  	@products = Product.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 6)
 
   	respond_to do |format|
         format.html 
