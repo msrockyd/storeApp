@@ -72,6 +72,7 @@
                 <td>
                 <% if user_signed_in?%>
                   <% if current_user.is_admin? %>
+                  <br><br>
                     <%= link_to 'Back', products_path, :class => "btn btn-primary" %>
                     <%else%>
                     <br><br>

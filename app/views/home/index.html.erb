@@ -1,6 +1,8 @@
 <div class="section">
     <div class="container">
+
         <div class="row">
+                <%= render partial: "layouts/flash_messages", flash: flash %> 
         <% @products.each_with_index do |product,index| %>
             <div class="col-sm-4">
                 <!-- Product -->

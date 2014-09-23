@@ -35,7 +35,7 @@ class Order < ActiveRecord::Base
   def price_in_cents
     #TODO should be total price of all products in cart
     #(cart.total_price*100).round
-    (cart.total_price*100).round
+    (cart.total_price*1).round
   end
 
   # private
