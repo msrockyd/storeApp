@@ -357,9 +357,9 @@ padding-right: 20px;
   .topcorner_search{
    position:absolute;
    
-   left:43%;
+   left:50%;
    z-index: 1212;
-   width: 565px;
+   width: 418px;
    text-align: right; 
    margin-top: 30px;
   }      
