@@ -17,19 +17,24 @@
 						<input type="text" class="form-control" required="required"  name="recipient[last_name]" placeholder="Last Name">
 					</li> 
 					<li class="shipping_address">
-						<input type="number" required="required"  name="recipient[phone_number]" class="form-control" placeholder="Phone Number">
+						<input type="text" required="required"  name="recipient[phone_number]" class="form-control" placeholder="Phone Number",  pattern="[0-9]*">
 					</li> 
 					<li class="shipping_address">
 						<textarea required  name="recipient[address]" class="form-control" placeholder="Address Line"></textarea>
 					</li> 
 					<li class="shipping_address">
-						<input type="number" required="required"  name="recipient[pin]" class="form-control" placeholder="PIN">
+						<input type="text" required="required"  name="recipient[pin]" class="form-control" placeholder="PIN", pattern="[0-9]*">
 					</li> 
 					<li class="shipping_address">
-						<input type="tel" required="required"  name="recipient[city]" class="form-control" placeholder="City">
+						<input type="text" required="required"  name="recipient[city]" class="form-control" placeholder="City">
 					</li>
 					<li class="shipping_address">
-						<input type="tel" required="required"  name="recipient[state]" class="form-control" placeholder="State / Region" >
+						<select required="required"  name="recipient[state]" class="form-control" placeholder="State / Region" >
+						<option value="">State / Region</option>
+						<% @states.each do |state|%>
+							<option value="<%= state%>"><%= state%></option>
+						<%end%>
+						</select>
 					</li> 
 
 				</ul>

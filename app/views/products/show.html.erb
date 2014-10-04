@@ -43,8 +43,10 @@
               </tr> -->
               <!-- Size Selector -->
               <tr>
+              <% unless @product.size.blank? %>
                 <td><b>Size:</b></td>
                 <td><%= @product.size %>
+              <%end%>
                   <!-- <div class="dropdown">
                     <a class="btn btn-sm btn-grey" data-toggle="dropdown" href="#"> <b class="caret"></b></a>
                     <ul class="dropdown-menu" role="menu">
@@ -86,9 +88,8 @@
                 <br><br>
                 <% if @product.stock.to_i > 0%>
                     <a href="/carts/send_products_id?product_id=<%= params[:id]%>" class="btn btn-blue"><i class="icon-shopping-cart icon-white"></i> Add to Cart</a>
-                 <% else %>
-                    <a href="#" class="btn btn-warning"><i class="icon-shopping-cart icon-white"></i> Out of Stock</a>
-                    <% end %>
+           
+                  <% end %>
                     
                 <% end %>
                 

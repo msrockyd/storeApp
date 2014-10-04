@@ -10,7 +10,7 @@
                     <!-- Product Image -->
                     <div class="image">
                         <a href="/products/<%= product.id%>">
-                            <%= image_tag product.image.url %>
+                            <%= image_tag product.image.url(:thumb) %>
                             <!-- <img src="img/product1.jpg" alt="Item Name"> -->
                         </a>
                     </div>
@@ -21,9 +21,13 @@
                     <!-- Product Available Colors-->
                     <div class="colors" style="color: orange">
                         <% if product.stock <= 3 %>
-                            <b>Only <%= product.stock %> Left !! </b>
+                            <% if  product.stock <= 0%>
+                                <b> Out of stock</b>
+                            <%else%>
+                                <b>Only <%= product.stock %> Left !! </b>
+                            <%end%>
                         <% end %>
-                        </span>
+                        
                         
                     </div>
                     <!-- Product Price-->
@@ -32,13 +36,12 @@
                     </div>
                     <!-- Product Description-->
                     <div class="description">
-                        <p><%= product.description %></p>
+                        <p><%= product.description[0,152] %> ... </p>
                     </div>
                     <!-- Add to Cart Button -->
                     <div class="actions">
-                        <% if product.stock <= 0%>
-                        <a class="btn btn-warning"><i class="icon-shopping-cart icon-white"></i> Out of Stock</a>
-                        <%else%>
+                        <% if product.stock > 0%>
+                     
                         <a href="/carts/send_products_id?product_id=<%= product.id %>" class="btn btn-primary"><i class="icon-shopping-cart icon-white"></i> Add to Cart</a>
                         
                         <%end%>

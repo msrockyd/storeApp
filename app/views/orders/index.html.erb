@@ -36,6 +36,7 @@
                             <td><%= order.order_status %></td>
                             <td>
                             <button class="btn btn-link" data-toggle="modal" data-target=".bs-example-modal-sm" onclick="show_modal(<%= order.id %>)">change Order status</button>
+                            <a href="/orders/<%= order.id %>">Order Detail</a>
 
                     </td>
                         </tr>

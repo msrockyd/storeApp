@@ -352,8 +352,17 @@ padding-right: 20px;
    z-index: 1212;
    width: 295px;
    text-align: right; 
-   margin-top: 48px;
-  }    
+   margin-top: 36px;
+  }
+  .topcorner_search{
+   position:absolute;
+   
+   left:43%;
+   z-index: 1212;
+   width: 565px;
+   text-align: right; 
+   margin-top: 30px;
+  }      
  
  .menu ul.dropit-submenu {
     background-color: #fff;

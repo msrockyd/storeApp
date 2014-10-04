@@ -24,7 +24,7 @@ development:
 test:
   adapter: mysql2
   encoding: utf8
-  database: StoreApp_test
+  database: StoreApp1
   pool: 5
   username: root
   password: 
@@ -33,7 +33,7 @@ test:
 production:
   adapter: mysql2
   encoding: utf8
-  database: StoreApp1_production
+  database: StoreApp1
   pool: 5
   host: localhost
   username: root

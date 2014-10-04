@@ -80,6 +80,7 @@ GEM
     money (6.2.1)
       i18n (>= 0.6.4, <= 0.7.0.dev)
     multi_json (1.10.1)
+    mysql2 (0.3.16)
     netrc (0.7.7)
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
@@ -97,7 +98,6 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
-    pg (0.17.1)
     polyglot (0.3.5)
     pry (0.10.1)
       coderay (~> 1.1.0)
@@ -176,8 +176,8 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   jquery-ui-rails
+  mysql2
   paperclip
-  pg
   pry
   rails (= 4.0.1)
   sass-rails (~> 4.0.0)

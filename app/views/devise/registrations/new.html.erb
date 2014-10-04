@@ -15,7 +15,7 @@
 							<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 							 <%= devise_error_messages! %>
 								<div class="form-group">
-		        				 	<label for="login-username"><i class="icon-user"></i> <b>Username or Email</b></label>
+		        				 	<label for="login-username"><i class="icon-user"></i> <b> Email</b></label>
 									<%= f.email_field :email, autofocus: true, :class => "form-control", :placeholder => "Email", :required => true %>
 								</div>
 								<div class="form-group">

@@ -43,7 +43,8 @@
         <% if current_user.is_admin%>
             <li><a href="/dashboard/index">Dashboard</a></li>
         <% end%>
-            <li><a href="/order_detail/index">Order Detail</a></li>
+            <li><a href="/order_detail/index">My orders</a></li>
+            <li><a href="/user_details">My profile</a></li>
             <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
         </ul>
       </li>
@@ -53,6 +54,17 @@
       <%= link_to "Sign up", new_user_registration_path, :id => 'signin_link' %>
     <%end%>
     </div>
+  </div>	
+  <div class="topcorner_search">
+  	 <form class="form-inline" role="form" action="/products/show_product">
+          <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search Products" name="search_data" id="search_data" style="width: 100% !important;">
+              <div class="input-group-btn">
+                  <button class="btn btn-blue" type="submit" style="margin-top: -1px;"><i class="glyphicon glyphicon-search" ></i> Search</button>
+              </div>
+          </div>
+
+          </form>
   </div>
  
 	        <%= render :partial => "/layouts/new_nav_bar" %>
@@ -63,18 +75,7 @@
 
 	   <% if params[:controller].eql?("products") or params[:controller].eql?("home")%>
 		
-	        <form class="form-inline" role="form" action="/products/show_product">
-	        <br>
-	        <div class="input-group">
-	            <input type="text" class="form-control" placeholder="Search Products" name="search_data" id="search_data">
-	            <div class="input-group-btn">
-	                <button class="btn btn-blue" type="submit"><i class="glyphicon glyphicon-search" ></i>Search</button>
-	            </div>
-	        </div>
-
-	        </form>
-
-	        <% end %>
+	   <% end %>
         </div>
         </div>
 	<%= yield %>

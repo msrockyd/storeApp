@@ -1,4 +1,12 @@
 StoreApp::Application.routes.draw do
+  resources :user_details do 
+    collection do
+      get 'edit'
+      get 'update'
+    end
+  end
+
+
   get "track/index"
   get "track/show"
   get "admin_users/index"

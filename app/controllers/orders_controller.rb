@@ -19,6 +19,11 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
+    @states = ["Andaman and Nicobar Islands","Andra Pradesh","Arunachal Pradesh","Assam","Bihar","Chandigarh",
+        "Chhattisgarh","Daman and Diu","Delhi","Goa","Gujarat","Haryana","Himachal Pradesh",
+        "Jammu and Kashmir","Jharkhand","Karnataka","Kerala","Lakshadeep","Madya Pradesh","Maharashtra",
+        "Manipur","Meghalaya","Mizoram","Nagaland","Orissa","Pondicherry","Punjab","Rajasthan","Sikkim",
+        "Tamil Nadu","Tripura","Uttaranchal","Uttar Pradesh","West Bengal"]
     @order = Order.new
     @total_price = Cart.find(params[:cart_id].to_i).total_price
   end

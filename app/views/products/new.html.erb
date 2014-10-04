@@ -41,7 +41,7 @@
 				  <div class="form-group">
 				    <label for="inputPassword3" class="col-sm-2 control-label">Stock</label>
 				    <div class="col-sm-10">
-				      <%= f.number_field :stock,:required => true, :class => "form-control", :placeholder=>"Total Stock" %>
+				      <%= f.text_field :stock,:required => true, :class => "form-control", :placeholder=>"Total Stock", :pattern=>"[0-9]*" %>
 				    </div>
 				  </div>
 

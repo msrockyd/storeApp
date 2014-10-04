@@ -1,10 +1,23 @@
 <div class="section">
 	<div class="container">
+						
+
 		<div class="row">
-		<div class="col-sm-12">
+		<div class="col-sm-2 blog-sidebar">
+				<br/>
+				<h4>User Profile</h4>
+				<ul class="recent-posts">
+					<li><span class="glyphicon glyphicon-user"></span> <a href="/user_details">My Profile</a></li>
+					<li><span class="glyphicon glyphicon-inbox"></span> <a href="/order_detail/index">My Orders</a> </li>
+					<li><span class="glyphicon glyphicon-log-out"> </span> <%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+				</ul>
+			</div>
+		<div class="col-sm-10">
+			<%= render partial: "layouts/flash_messages", flash: flash %>
+		
 			<div class="blog-post blog-single-post">
 				<div class="single-post-title">
-					<h3>Order List</h3>
+					<h3>My Order List</h3>
 				</div>
 				<div class="single-post-info">
 					<i class="glyphicon"></i>
