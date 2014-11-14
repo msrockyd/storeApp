@@ -2688,8 +2688,8 @@ width: 100%;
 }
  #circle { 
 
-  width: 33px; 
-  height: 33px; 
+  width: 30px; 
+  height: 30px; 
   background: #A9BCF5; 
   -moz-border-radius: 50px; 
   -webkit-border-radius: 50px; 
@@ -2701,11 +2701,11 @@ width: 100%;
   .icon-center{
     padding-top: 8px;
     padding-left: 8px;
-    font-size: 17px;
+    font-size: 15px;
     color: #0B0B3B;
   }
 .no_style{
-  font-size: 16px;
+  font-size: 14px;
   color: #0B0B3B;
 }  
 .top_pad{
@@ -2721,9 +2721,9 @@ float: left;
 }
 .push-right{
   padding-top: 6px;
-  padding-left: 0px;
+  padding-left: 2px;
   float: left;
-  font-size: 17px;
+  font-size: 14px;
 }
 
 .push-right a {
