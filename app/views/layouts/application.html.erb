@@ -15,60 +15,7 @@
 <![endif]-->
 	<!-- Navigation & Logo-->
 	<div class="mainmenu-wrapper">
-	    	<div id="top-nav-bar">
-
-			<div class="topcorner ">
-				<a href="/">
-				<i class="glyphicon glyphicon-home icon-white"></i>Home
-				</a>&nbsp;|&nbsp;
-				<a href="/track/index" onclick="show_track_modal();">
-				<i class="glyphicon glyphicon-zoom-in icon-white"></i>Track Order
-				</a>&nbsp;|&nbsp;
-				<a href="/carts/index">
-				<i class="glyphicon glyphicon-shopping-cart icon-white"></i>
-				<%= @cart_count %> Items</a>
-
-			</div>
-
-    <div class="topcorner_user">
-  
-    <div>
-    <% if user_signed_in? %>
-       
-      
-      <ul class="menu dropit">
-      <li>
-        <a href="#"><span class="glyphicon glyphicon-user"></span><%= current_user.email %>  &nbsp;</a>
-        <ul class="dropit-submenu">
-        <% if current_user.is_admin%>
-            <li><a href="/dashboard/index">Dashboard</a></li>
-        <% end%>
-            <li><a href="/order_detail/index">My orders</a></li>
-            <li><a href="/user_details">My profile</a></li>
-            <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
-        </ul>
-      </li>
-      </ul>
-    <%else%>
-      <%= link_to "Sign in", new_user_session_path, :id => 'signin_link', :onclick => "check_login('#{request.original_url}','#{request.host_with_port}');"  %> &nbsp;
-      <%= link_to "Sign up", new_user_registration_path, :id => 'signin_link' %>
-    <%end%>
-    </div>
-  </div>	
-  <div class="topcorner_search">
-  	 <form class="form-inline" role="form" action="/products/show_product">
-          <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search Products" name="search_data" id="search_data" style="width: 100% !important;">
-              <div class="input-group-btn">
-                  <button class="btn btn-blue" type="submit" style="margin-top: -1px;"><i class="glyphicon glyphicon-search" ></i> Search</button>
-              </div>
-          </div>
-
-          </form>
-  </div>
- 
-	        <%= render :partial => "/layouts/new_nav_bar" %>
-	        </div>
+	   <%= render :partial => "/layouts/new_top_bar" %>
 	</div>
 	<div class="container">
 	   <div class="col-sm-offset-2 col-md-8 col-sm-8">

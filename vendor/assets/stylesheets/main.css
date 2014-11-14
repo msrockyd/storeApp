@@ -1,6 +1,7 @@
 /*--------------------------------------------------------------------------
 	General Style
 --------------------------------------------------------------------------*/
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,400italic);
 body {
   background: url('/assets/page-background.png');
 }
@@ -64,7 +65,7 @@ div[class*="span"] {
 	Typography Style
 --------------------------------------------------------------------------*/
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   line-height: 20px;
   color: #535b60;
@@ -84,7 +85,7 @@ h2 {
   padding-left: 10px;
 }
 h3 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Raleway', sans-serif;
   color: #53555c;
   font-size: 1.5em;
 }
@@ -752,13 +753,14 @@ a:hover {
   padding: 20px 0 10px;
 }
 .shop-item .title h3 {
-  font-size: 0.9em;
+  font-size: 1.2em;
   margin: 0 10px;
   text-align: center;
+  font-weight: 200 !important;
 }
 .shop-item .title h3 a {
-  color: #535b60;
-  text-transform: uppercase;
+  color: #848484;
+  text-transform: capitalize;
 }
 .shop-item .colors {
   text-align: center;
@@ -793,7 +795,7 @@ a:hover {
 }
 .shop-item .description {
   color: #828282;
-  font-size: 0.9em;
+  font-size: 1em;
   text-align: justify;
   margin: 0 10px;
 }
@@ -2669,3 +2671,67 @@ width: 100%;
 .dropdown.open a.dropdown-toggle .caret {
   border-top: 4px solid #FFF;
 }
+
+.top_details{
+  background: none repeat scroll 0 0 #FAFAFA;
+  min-height: 35px;
+  text-decoration: none;
+}
+
+.menu_detail{
+  background: none repeat scroll 0 0 #FAFAFA;
+  min-height: 109px;
+}
+.main_logo{
+  padding-left: 35px;
+ 
+}
+ #circle { 
+
+  width: 33px; 
+  height: 33px; 
+  background: #A9BCF5; 
+  -moz-border-radius: 50px; 
+  -webkit-border-radius: 50px; 
+  border-radius: 50px; 
+  text-decoration: none;
+}
+
+
+  .icon-center{
+    padding-top: 8px;
+    padding-left: 8px;
+    font-size: 17px;
+    color: #0B0B3B;
+  }
+.no_style{
+  font-size: 16px;
+  color: #0B0B3B;
+}  
+.top_pad{
+  padding-top: 6px;
+}
+.zero-pad{
+  padding-left: 4px;
+    padding-right: 4px;
+}
+
+.push-left{
+float: left;
+}
+.push-right{
+  padding-top: 6px;
+  padding-left: 0px;
+  float: left;
+  font-size: 17px;
+}
+
+.push-right a {
+  text-decoration: none;
+  color: #696969;
+}
+
+.push-right a:hover {
+  color: #4f8db3;
+}
+

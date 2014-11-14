@@ -1,4 +1,5 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+/*@import url(http://fonts.googleapis.com/css?family=Open+Sans);*/
+@import url(http://fonts.googleapis.com/css?family=Raleway);
 #cssmenu,
 #cssmenu ul,
 #cssmenu ul li,
@@ -30,9 +31,9 @@
 }
 #cssmenu {
   width: auto;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Raleway', sans-serif;
   line-height: 1;
-  background: #ffffff;
+  /*background: #ffffff;*/ /* changed for new top bar*/ 
 }
 #cssmenu > ul > li > a:hover {
     background-color: transparent;
@@ -71,7 +72,7 @@
 }
 #cssmenu > ul > li > a {
   padding: 18px;
-  font-size: 14px;
+  font-size: 16px;
   color: #7C7C7C;
   text-decoration: none;
   /*text-transform: uppercase;*/
@@ -142,12 +143,12 @@
   transition: height .2s ease;
 }
 #cssmenu ul li:hover > ul > li {
-  height: 34px;
+  height: 36px;
 }
 #cssmenu ul ul li a {
   padding: 10px 20px;
   width: 160px;
-  font-size: 14px;
+  font-size: 16px;
   background: #fff;
   text-decoration: none;
   color: #7C7C7C;
@@ -369,7 +370,7 @@ padding-right: 20px;
     border: 1px solid #b2b2b2;
     border-radius: 3px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-    margin: 3px 0 0 1px;
+    margin: 3px 43px 0 1px;
     padding: 6px 0;
 }
 .menu ul.dropit-submenu a {

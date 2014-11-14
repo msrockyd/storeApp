@@ -1,0 +1,111 @@
+<div id="top-nav-bar">
+	<div class="top_details">
+		<div class="col-sm-offset-6  col-sm-6 top_pad">
+			<div class="row">
+				<div class="col-sm-3"></div>
+				<div class="col-sm-4 no_style">
+					<a href="/">
+						<i class="glyphicon glyphicon-home icon-white"></i> Home
+						</a>&nbsp;&nbsp;&nbsp;
+						<a href="/track/index" onclick="show_track_modal();">
+						<i class="glyphicon glyphicon-zoom-in icon-white"></i> Track Order
+					</a>&nbsp;&nbsp;
+				</div>
+				<div class="col-sm-4 no_style ">
+					<% if user_signed_in? %>
+           
+			          <ul class="menu dropit">
+			          <li>
+			            <a href="#"><span class="glyphicon glyphicon-user"></span><%= current_user.email %>  &nbsp;</a>
+			            <ul class="dropit-submenu">
+			            <% if current_user.is_admin%>
+			                <li><a href="/dashboard/index">Dashboard</a></li>
+			            <% end%>
+			                <li><a href="/order_detail/index">My orders</a></li>
+			                <li><a href="/user_details">My profile</a></li>
+			                <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+			            </ul>
+			          </li>
+			          </ul>
+			          <%else%>
+			          <%= link_to "Sign in", new_user_session_path, :id => 'signin_link', :onclick => "check_login('#{request.original_url}','#{request.host_with_port}');"  %> &nbsp; &nbsp; &nbsp;
+			          <%= link_to "Sign up", new_user_registration_path, :id => 'signin_link' %>
+			          <%end%>
+				</div>
+				<div class="col-sm-1"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="menu_detail">
+		<div class="row" style="  padding-top: 30px;">
+			<div class="col-sm-2">
+				 <img class="main_logo" src="/assets/logo_2.png" alt="Multipurpose Twitter Bootstrap Template"></a>
+			</div>
+			<div class="col-sm-6">
+				<div id='cssmenu'>
+			      <ul>
+			      <% @menu_categories.each do |menu_category|%>
+			        <% if menu_category.categories.length.to_i > 0 %>
+			            <li class='has-sub'><%= link_to menu_category.menu_text.capitalize, show_product_products_path(:menu_category =>menu_category.id) %>
+			                <ul>
+			                  <% menu_category.categories.each do |category| %>
+			                    <% if category.sub_categories.length.to_i > 0 %>
+			                      <li class="has-sub"><%= link_to category.category_name.capitalize, show_product_products_path(:category =>category.id) %>
+			                          <ul>
+			                            <% category.sub_categories.each do |sub_category|%>
+			                              <li>
+			                                <%= link_to sub_category.sub_category_name.capitalize, show_product_products_path(:sub_category =>sub_category.id) %>
+			                              </li>
+			                            <%end%>
+			                          </ul>
+			                      </li>
+			                    <%else%><% category.sub_categories.each do |sub_category|%>
+			                      <li>
+			                        <%= link_to sub_category.sub_category_name.capitalize, show_product_products_path(:sub_category =>sub_category.id) %>
+			                      </li>
+			                    <%end%>
+			                    <li><%= link_to category.category_name.capitalize, show_product_products_path(:category =>category.id) %></li>
+			                    <%end%>
+			                  <% end %>
+			                </ul>
+			            </li>
+			        <% else %>
+			         <li><%= link_to menu_category.menu_text.capitalize, show_product_products_path(:menu_category =>menu_category.id) %></li>
+			        <%end%>
+			        
+			      <%end %>
+			      
+			      </ul>
+			   </div>
+			</div>
+			<div class="col-sm-2">
+			  <form class="form-inline" role="form" action="/products/show_product">
+	              <div class="input-group">
+	                  <input type="text" class="form-control" placeholder="Search Products" name="search_data" id="search_data" style="width: 100% !important;">
+	                  <div class="input-group-btn">
+	                      <button class="btn btn-default" type="submit" style="margin-top: 0px;"><i class="glyphicon glyphicon-search" ></i> </button>
+	                  </div>
+	              </div>
+              </form>
+			</div>
+			<div class="col-sm-1 zero-pad">
+				<div id="circle" class="push-left">
+				<a href="/carts/index">
+					<i class="glyphicon glyphicon-shopping-cart icon-white icon-center"></i>
+					
+				</a>
+				</div>
+				<div class="push-right"> <a href="/carts/index"> <%= @cart_count %> 
+				<%= (@cart_count<=1)? "Item" : "Item"%></a>
+				</div>
+			</div>
+			<div class="col-sm-1"></div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+
+  assign_dropit();
+
+</script>
