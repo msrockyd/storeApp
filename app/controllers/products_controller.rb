@@ -75,7 +75,7 @@ class ProductsController < ApplicationController
 
   def show_product
     if params[:search_data]
-      @products = Product.where("name LIKE ?", "%#{params[:search_data].upcase}%").order("created_at DESC").paginate(:page => params[:page], :per_page => 6)
+      @products = Product.where("LOWER(name) LIKE ?", "%#{params[:search_data].downcase}%").order("created_at DESC").paginate(:page => params[:page], :per_page => 6)
     end
     if params[:menu_category]
       menu_category_id = params[:menu_category]
