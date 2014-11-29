@@ -44,7 +44,7 @@
                     <div class="actions">
                         <% if product.stock > 0%>
                      
-                        <a href="/carts/send_products_id?product_id=<%= product.id %>" class="btn btn-add_cart"><i class="icon-shopping-cart icon-white"></i> </a>
+                        <a href="/carts/send_products_id?product_id=<%= product.id %>" class="btn btn-primary"><i class="icon-shopping-cart icon-white"></i> Add to Cart</a>
                         
                         <%end%>
                         <a href="/products/<%= product.id%>" class="btn btn-info"><i class="icon-shopping-cart icon-white"></i> Product Detail</a>
