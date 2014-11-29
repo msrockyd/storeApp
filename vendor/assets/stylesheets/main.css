@@ -1704,7 +1704,7 @@ span.color-red {
   background: #222;
   color: #A0A0A0;
   padding: 0 20px 10px 20px;
-  border-top: 4px solid #4f8db3;
+  /*border-top: 4px solid #4f8db3;*/
   margin-top: 20px;
   -webkit-box-shadow: 0 -1px 12px rgba(0,0,0,0.4);
   -moz-box-shadow: 0 -1px 12px rgba(0,0,0,0.4);
@@ -2735,3 +2735,12 @@ float: left;
   color: #4f8db3;
 }
 
+.btn-add_cart{
+  width: 30px; 
+  height: 30px; 
+  background: #A9BCF5; 
+  -moz-border-radius: 50px; 
+  -webkit-border-radius: 50px; 
+  border-radius: 50px; 
+  text-decoration: none; 
+}
