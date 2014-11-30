@@ -2736,11 +2736,23 @@ float: left;
 }
 
 .btn-add_cart{
-  width: 30px; 
-  height: 30px; 
+  width: 40px; 
+  height: 40px; 
   background: #A9BCF5; 
   -moz-border-radius: 50px; 
   -webkit-border-radius: 50px; 
   border-radius: 50px; 
   text-decoration: none; 
+}
+.add-cart-icon-center{
+  padding-top: 0px;
+  padding-left: 0px;
+  font-size: 20px;
+  color: #0B0B3B;
+  top: 4px;
+ right: 2px;
+ 
+}
+.add-cart-icon-center:hover{
+  color: #FFFFFF;
 }
